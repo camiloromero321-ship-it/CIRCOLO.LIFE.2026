@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circolo Life | Pure Legacy</title>
-    <!-- Fuentes -->
+    <title>Circolo Life | The Circle of Life</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTÉTICA "TOTAL WHITE" --- */
+        /* --- BONE & QUIET LUXURY AESTHETIC --- */
         :root {
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --accent-color: #888888;
+            /* Tono Hueso más claro / Lighter Off-White */
+            --bg-color: #F9F8F6; 
+            /* Tono secundario ajustado para mantener el contraste sutil */
+            --bg-secondary: #F2F0EB; 
+            /* Texto Charcoal suave, no negro puro */
+            --text-color: #222222; 
+            --accent-color: #666666;
+            /* Líneas finas editoriales */
+            --border-color: rgba(0, 0, 0, 0.06); 
+            
             --font-serif: 'Cormorant Garamond', serif; 
-            --font-sans: 'Inter', sans-serif;
+            --font-sans: 'Ubuntu', sans-serif;
+            --shape-color: #1a1a1a;
         }
 
         * { box-sizing: border-box; }
@@ -28,13 +36,13 @@
             padding: 0;
             font-family: var(--font-sans);
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             transition: direction 0.3s ease;
         }
 
-        /* Soporte RTL */
+        /* RTL Support */
         body[dir="rtl"] { font-family: 'Tahoma', 'Arial', sans-serif; }
         body[dir="rtl"] .main-header { flex-direction: row-reverse; }
         body[dir="rtl"] .logo { letter-spacing: 0; font-size: 1.4rem; }
@@ -46,9 +54,11 @@
         body[dir="rtl"] .press-row { flex-direction: row-reverse; }
         body[dir="rtl"] .press-date, body[dir="rtl"] .press-source { text-align: left; }
         body[dir="rtl"] .press-headline { text-align: right; }
-        body[dir="rtl"] .whatsapp-float { left: 30px; right: auto; }
+        body[dir="rtl"] .directory-item { flex-direction: row-reverse; }
+        body[dir="rtl"] .directory-name { text-align: right; }
+        body[dir="rtl"] .directory-role { text-align: right; }
 
-        /* --- TIPOGRAFÍA --- */
+        /* --- TYPOGRAPHY --- */
         h1, h2, h3, h4, h5 {
             font-family: var(--font-serif);
             font-weight: 300;
@@ -58,49 +68,51 @@
 
         .subtitle {
             font-family: var(--font-sans);
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
             display: block;
             color: var(--accent-color);
+            font-weight: 400;
         }
 
         .heading-xl {
-            font-size: 2.8rem;
-            line-height: 1.1;
-            margin-bottom: 0;
-            letter-spacing: -0.01em;
+            font-size: 4rem; /* Más grande, estilo editorial */
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
         }
 
         .heading-l {
-            font-size: 2rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
         p {
-            font-size: 0.9rem;
-            max-width: 550px;
+            font-size: 1rem;
+            max-width: 600px;
             margin: 0 auto;
             color: #444;
-            line-height: 1.8;
+            line-height: 1.9; /* Mayor interlineado para lectura relajada */
         }
 
-        /* Enlaces */
+        /* Links */
         a.text-link {
             color: var(--text-color);
             text-decoration: none;
             font-family: var(--font-sans);
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             position: relative;
-            padding-bottom: 3px;
-            margin-top: 1.5rem;
+            padding-bottom: 4px;
+            margin-top: 2rem;
             display: inline-block;
             cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
         }
 
         a.text-link::after {
@@ -109,7 +121,7 @@
             width: 100%;
             transform: scaleX(0);
             height: 1px;
-            bottom: 0;
+            bottom: -1px;
             left: 0;
             background-color: var(--text-color);
             transform-origin: bottom right;
@@ -123,7 +135,7 @@
 
         /* --- HEADER --- */
         .main-header {
-            padding: 1.2rem 3rem;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -136,31 +148,31 @@
         }
 
         .main-header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 0.8rem 3rem;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+            background-color: rgba(249, 248, 246, 0.95); /* Actualizado al nuevo tono hueso claro */
+            padding: 1rem 3rem;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            letter-spacing: 0.3em;
+            font-family: var(--font-serif); /* Serif para el logo, más elegante */
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             font-weight: 400;
-            color: #2a2a2a;
+            color: #1a1a1a;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
         }
 
         .header-left { display: flex; align-items: center; }
-        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .header-right { display: flex; align-items: center; gap: 2rem; }
 
         .menu-trigger {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             cursor: pointer;
             color: var(--text-color);
             display: flex;
@@ -173,24 +185,23 @@
             color: var(--text-color);
             padding: 8px 0;
             font-family: var(--font-sans);
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             border: none;
-            border-bottom: 1px solid transparent;
             cursor: pointer;
-            transition: border-color 0.3s;
+            transition: opacity 0.3s;
         }
 
-        .cta-btn:hover { border-bottom: 1px solid var(--text-color); }
+        .cta-btn:hover { opacity: 0.6; }
 
         /* --- LANGUAGE SELECTOR --- */
         .lang-selector {
             position: relative;
             font-family: var(--font-sans);
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             cursor: pointer;
             padding: 8px 0;
             min-width: 25px;
@@ -208,15 +219,15 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background-color: #fff;
+            background-color: var(--bg-color);
             min-width: 100px;
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
             text-align: right;
         }
 
@@ -228,12 +239,12 @@
 
         .lang-dropdown span {
             display: block;
-            padding: 4px 1.2rem;
-            color: #999;
+            padding: 6px 1.5rem;
+            color: #888;
             text-decoration: none;
             transition: color 0.2s;
             cursor: pointer;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
         }
 
         .lang-dropdown span:hover { color: var(--text-color); }
@@ -248,14 +259,15 @@
             text-align: center;
             padding: 0 2rem;
             position: relative;
-            background-color: #fff;
+            background-color: var(--bg-color);
             overflow: hidden; 
         }
 
         .hero-image-container {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 2rem; left: 2rem; right: 2rem; bottom: 2rem; /* Frame effect */
             z-index: 1;
+            overflow: hidden;
         }
 
         .hero-bg-img {
@@ -264,50 +276,60 @@
             object-fit: cover;
             object-position: center;
             filter: grayscale(100%);
-            opacity: 0.2; 
+            opacity: 0.3; 
             transition: opacity 2s ease, transform 6s ease;
         }
         
         .hero:hover .hero-bg-img { 
             opacity: 0.5; 
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
         
         .hero-content { position: relative; z-index: 2; max-width: 1000px; }
 
         /* --- SECTIONS --- */
-        .section-spacer { padding: 4rem 3rem; }
+        .section-spacer { padding: 8rem 3rem; } /* Más espacio vertical (editorial) */
         .text-center { text-align: center; }
 
         /* --- MANIFIESTO --- */
         .manifesto {
-            background-color: #fff;
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .manifesto-text {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 2.2rem;
             text-align: center;
-            line-height: 1.5;
-            max-width: 700px;
-            color: #333;
-            margin-bottom: 2rem;
+            line-height: 1.4;
+            max-width: 850px;
+            color: #111;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        
+        .manifesto-sub {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 1rem;
+            max-width: 600px;
+            letter-spacing: 0.05em;
         }
 
         /* --- MARQUEE --- */
         .marquee-container {
             width: 100%;
             overflow: hidden;
-            padding: 2rem 0;
-            border-top: 1px solid #f9f9f9;
-            border-bottom: 1px solid #f9f9f9;
-            background: #fff;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-color);
             white-space: nowrap;
         }
         
@@ -321,9 +343,9 @@
             font-family: var(--font-sans);
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #999;
-            padding: 0 3rem;
+            letter-spacing: 0.2em;
+            color: #888;
+            padding: 0 4rem;
         }
 
         @keyframes scrollMarquee {
@@ -331,31 +353,179 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* --- SHAPE SYSTEM GRID (THE 4 PILLARS) --- */
+        .shapes-section {
+            padding: 8rem 4rem;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .shape-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0; /* Sin gap para bordes tipo revista */
+            max-width: 1600px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+        }
+
+        .shape-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.4s ease;
+        }
+
+        .shape-card:hover { background-color: #F0EEE9; }
+
+        .shape-icon-container {
+            height: 90px;
+            width: 90px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CSS SHAPES */
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 60px solid var(--shape-color);
+        }
+
+        .shape-spark {
+            width: 60px;
+            height: 60px;
+            background: var(--shape-color);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .shape-square {
+            width: 55px;
+            height: 55px;
+            background-color: var(--shape-color);
+        }
+
+        .shape-plus {
+            position: relative;
+            width: 55px;
+            height: 55px;
+        }
+        .shape-plus::before, .shape-plus::after {
+            content: '';
+            position: absolute;
+            background-color: var(--shape-color);
+        }
+        .shape-plus::before { top: 24px; left: 0; width: 55px; height: 7px; }
+        .shape-plus::after { top: 0; left: 24px; width: 7px; height: 55px; }
+
+        .shape-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .shape-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #999;
+            margin-bottom: 1.2rem;
+        }
+
+        .shape-desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* --- DATA & CONTEXT SECTION --- */
+        .context-section {
+            padding: 8rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--bg-secondary); /* Alternancia sutil */
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6rem;
+            margin-top: 4rem;
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+        
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -3rem;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: var(--border-color);
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            font-family: var(--font-serif); /* Serif para números más elegantes */
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .stat-item p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #666;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
         /* --- PROJECT CAROUSEL --- */
         .project-carousel-section {
             padding: 0;
             overflow: hidden;
-            background-color: #fafafa;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
         }
 
         .project-carousel-container {
             width: 100%;
-            padding: 3rem 0;
+            padding: 5rem 0;
             overflow: hidden;
         }
 
         .project-carousel-track {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             width: max-content;
-            animation: scrollProjects 50s linear infinite;
+            animation: scrollProjects 60s linear infinite; /* Más lento y elegante */
             padding-left: 0;
         }
 
         .project-carousel-track:hover { animation-play-state: paused; }
 
         .project-card-slide {
-            flex: 0 0 260px;
+            flex: 0 0 320px; /* Tarjetas más anchas */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -368,39 +538,39 @@
 
         .slide-image-wrapper {
             width: 100%;
-            aspect-ratio: 4/3;
+            aspect-ratio: 3/4; /* Formato retrato clásico editorial */
             overflow: hidden;
-            margin-bottom: 0.8rem;
-            background-color: #eee;
+            margin-bottom: 1.2rem;
+            background-color: #E0DED9;
         }
 
         .slide-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.6s ease;
+            object-position: center;
+            filter: grayscale(0%);
+            transition: all 0.8s ease;
         }
 
         .project-card-slide:hover .slide-image-wrapper img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .slide-country {
             font-family: var(--font-sans);
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--accent-color);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
 
         .slide-title {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
-            margin-bottom: 0.1rem;
-            font-weight: 300;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
             color: var(--text-color);
         }
 
@@ -408,81 +578,27 @@
             font-family: var(--font-sans);
             font-size: 0.65rem;
             color: #777;
+            letter-spacing: 0.05em;
         }
 
         @keyframes scrollProjects {
             0% { transform: translateX(0); }
-            /* Ajustado a 7 items para mantener el bucle perfecto */
-            100% { transform: translateX(calc(-1 * (260px + 1.5rem) * 7)); }
+            100% { transform: translateX(calc(-1 * (320px + 2rem) * 6)); }
         }
 
-        /* --- GRID DE SERVICIOS (PRODUCTOS) --- */
-        .grid-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            padding: 0 2rem;
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .card-image-wrapper {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            aspect-ratio: 3/4;
-            background-color: #f0f0f0;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .card:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.03);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.4rem;
-            font-weight: 300;
-        }
-
-        /* --- PRESS SECTION (Editorial Grid) --- */
+        /* --- PRESS SECTION --- */
         .press-section {
-            background-color: #fff;
-            padding: 6rem 4rem;
-            border-top: 1px solid #f9f9f9;
+            background-color: var(--bg-secondary);
+            padding: 8rem 4rem;
+            border-top: 1px solid var(--border-color);
         }
 
         .press-grid {
             max-width: 1600px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Columnas */
-            gap: 2rem;
-        }
-
-        /* Clase para ocultar noticias extra */
-        .press-hidden { display: none; }
-        .press-visible { display: flex; animation: fadeInPress 0.6s ease forwards; }
-
-        @keyframes fadeInPress {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 3rem;
         }
 
         .press-card {
@@ -493,54 +609,53 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .press-card:hover { opacity: 0.9; transform: translateY(-5px); }
+        .press-card:hover { opacity: 0.8; transform: translateY(-5px); }
 
         .press-image-wrapper {
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 4/3; /* Más editorial que 16:9 */
             overflow: hidden;
-            margin-bottom: 1.2rem;
-            background-color: #f5f5f5;
-            position: relative;
+            margin-bottom: 1.5rem;
+            background-color: #DDD;
         }
 
         .press-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%); 
-            transition: all 0.6s ease;
+            filter: grayscale(0%);
+            transition: all 0.8s ease;
         }
 
-        .press-card:hover .press-image-wrapper img {
-            filter: grayscale(0%);
-            transform: scale(1.03);
-        }
+        .press-card:hover .press-image-wrapper img { transform: scale(1.03); }
 
         .press-meta {
             font-family: var(--font-sans);
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #999;
-            margin-bottom: 0.5rem;
-            display: block;
+            letter-spacing: 0.2em;
+            color: #888;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            width: fit-content;
         }
 
         .press-title {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
-            font-weight: 300;
+            font-size: 1.4rem;
+            font-weight: 400;
             line-height: 1.3;
-            margin: 0 0 0.8rem 0;
-            min-height: 3rem;
+            margin: 0 0 1rem 0;
+            min-height: 3.5rem;
         }
 
         .press-description {
             font-family: var(--font-sans);
-            font-size: 0.7rem;
-            color: #666;
-            line-height: 1.6;
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.7;
             margin-bottom: 1rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
@@ -548,290 +663,237 @@
             overflow: hidden;
         }
 
-        .press-link-text {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-bottom: 1px solid #ddd;
-            width: fit-content;
-            padding-bottom: 2px;
-            margin-top: auto;
+        /* --- TEAM DIRECTORY --- */
+        .directory-section {
+            padding: 8rem 4rem;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
         }
 
-        .press-expand-container { text-align: center; margin-top: 4rem; }
-        .press-expand-btn {
-            background: transparent;
-            border: 1px solid #e0e0e0;
-            padding: 12px 30px;
+        .directory-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .directory-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .directory-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0; /* Más aire */
+            border-bottom: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .directory-item:hover {
+            background-color: var(--bg-secondary);
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .directory-info {
+            display: flex;
+            gap: 4rem;
+            align-items: baseline;
+            flex-grow: 1;
+        }
+
+        .directory-name {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            min-width: 300px;
+            letter-spacing: -0.01em;
+        }
+
+        .directory-role {
             font-family: var(--font-sans);
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--text-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .press-expand-btn:hover { border-color: var(--text-color); background-color: var(--text-color); color: #fff; }
-
-        /* --- INSTAGRAM STORIES --- */
-        .stories-section {
-            padding: 4rem 0;
-            background-color: #fafafa;
+            color: #888;
         }
 
-        .stories-scroll-wrapper {
-            display: flex;
-            overflow-x: auto;
-            gap: 1rem;
-            padding: 0 2rem 1.5rem 2rem;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-        
-        .stories-scroll-wrapper::-webkit-scrollbar { display: none; }
-
-        .story-card {
-            flex: 0 0 180px;
-            aspect-ratio: 9/16;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 2px;
-            scroll-snap-align: start;
-            background-color: #eee;
-        }
-
-        .story-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: transform 0.6s ease;
-        }
-
-        .story-card:hover .story-img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
-
-        .story-play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 35px;
-            height: 35px;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(4px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.4);
-        }
-
-        .story-play-icon svg {
-            width: 12px;
-            height: 12px;
-            fill: #fff;
-            margin-left: 2px;
-        }
-
-        .story-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .story-title {
-            color: #fff;
+        .directory-link {
             font-family: var(--font-sans);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* --- WHATSAPP FLOATING BUTTON (LUJO SILENCIOSO) --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: transparent; /* Fondo transparente para minimalismo */
-            border: 1px solid var(--text-color); /* Borde fino elegante */
-            border-radius: 50%;
+            letter-spacing: 0.15em;
+            color: var(--text-color);
+            opacity: 0.4;
+            transition: opacity 0.3s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 2000;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            gap: 8px;
         }
 
-        .whatsapp-float:hover {
-            background-color: var(--text-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .whatsapp-icon {
-            width: 24px;
-            height: 24px;
-            fill: var(--text-color);
-            transition: fill 0.3s ease;
-        }
-
-        .whatsapp-float:hover .whatsapp-icon {
-            fill: #fff; /* Invertir color al hover */
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: #fff;
-            width: 90%;
-            max-width: 400px;
-            aspect-ratio: 9/16;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #fff;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 2001;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        iframe.instagram-embed { width: 100%; height: 100%; border: none; }
-
-        /* --- TEAM GRID --- */
-        .team-grid-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-            padding: 0 2rem;
-        }
-
-        .team-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .team-card-image-wrapper {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 0.8rem;
-            aspect-ratio: 3/4;
-            background-color: #fdfdfd;
-            padding: 6px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        .team-card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.6s ease;
-        }
-
-        .linkedin-icon {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            width: 24px;
-            height: 24px;
-            fill: #fff;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
-            z-index: 2;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-
-        .team-card-link:hover .team-card-image-wrapper img { filter: grayscale(0%); transform: scale(1.02); }
-        .team-card-link:hover .linkedin-icon { opacity: 1; transform: translateY(0); }
-
-        .team-name { font-size: 0.8rem; margin-bottom: 0.2rem; font-weight: 400; color: var(--text-color); }
-        .team-role { font-family: var(--font-sans); font-size: 0.45rem; text-transform: uppercase; letter-spacing: 0.15em; color: #999; }
+        .directory-item:hover .directory-link { opacity: 1; }
 
         /* --- FOOTER --- */
         footer {
-            padding: 3rem 2rem;
+            padding: 5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid var(--border-color);
             margin-top: 0;
+            background-color: var(--bg-color);
         }
 
-        .footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col { display: flex; flex-direction: column; gap: 1rem; }
         .footer-link {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: #111;
             text-decoration: none;
-            opacity: 0.6;
+            opacity: 0.5;
             transition: opacity 0.3s;
         }
         .footer-link:hover { opacity: 1; }
 
         @media (max-width: 1024px) {
-            .heading-xl { font-size: 2.2rem; }
-            .grid-container { grid-template-columns: 1fr; gap: 2rem; }
-            .team-grid-container { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-            .press-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; padding: 0 1rem; }
-            .section-spacer { padding: 3rem 1.5rem; }
-            footer { flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
-            .main-header { padding: 0.8rem 1rem; }
+            .heading-xl { font-size: 3rem; }
+            .shape-grid { grid-template-columns: repeat(2, 1fr); border-right: 1px solid var(--border-color); }
+            .shape-card:nth-child(2n) { border-right: none; }
+            .press-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .stat-item:not(:last-child)::after { display: none; }
+            footer { flex-direction: column; align-items: center; gap: 3rem; text-align: center; }
         }
         
         @media (max-width: 768px) {
-             .team-grid-container { grid-template-columns: repeat(2, 1fr); }
+             .section-spacer { padding: 5rem 1.5rem; }
+             .shape-grid { grid-template-columns: 1fr; border-right: none; }
+             .shape-card { border-right: none; }
              .press-grid { grid-template-columns: 1fr; }
+             .heading-xl { font-size: 2.5rem; }
+             .manifesto-text { font-size: 1.6rem; }
+             
+             /* Directory Mobile */
+             .directory-info { flex-direction: column; gap: 0.5rem; }
+             .directory-name { font-size: 1.4rem; min-width: auto; }
+             .directory-item { align-items: flex-start; padding: 1.5rem 0; }
+             .directory-link { margin-top: 1rem; align-self: flex-start; }
+             .hero-image-container { left: 1rem; right: 1rem; top: 1rem; bottom: 1rem; }
         }
+
+        /* --- WHATSAPP WIDGET UNIFICADO (LUJO SILENCIOSO) --- */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column-reverse; /* Las opciones aparecen arriba */
+            align-items: center;
+        }
+
+        /* Botón Principal (Trigger) */
+        .whatsapp-trigger {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(249, 248, 246, 0.85);
+            border: 1px solid var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .whatsapp-widget:hover .whatsapp-trigger {
+            background-color: var(--text-color);
+            transform: rotate(45deg); /* Efecto de apertura */
+        }
+        
+        .whatsapp-widget:hover .whatsapp-trigger .whatsapp-icon {
+            fill: var(--bg-color); /* Invierte el color del icono */
+        }
+
+        /* Contenedor de Opciones (Oculto por defecto) */
+        .whatsapp-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .whatsapp-widget:hover .whatsapp-options {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Botones Individuales */
+        .whatsapp-opt {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-color);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-opt:hover {
+            background-color: var(--text-color);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-opt:hover .whatsapp-icon-small {
+            fill: var(--bg-color);
+        }
+
+        /* Etiquetas de Texto (Tooltip) */
+        .whatsapp-opt::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            opacity: 0;
+            visibility: hidden;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-opt:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-icon { width: 28px; height: 28px; fill: var(--text-color); transition: fill 0.3s; }
+        .whatsapp-icon-small { width: 20px; height: 20px; fill: var(--text-color); transition: fill 0.3s; }
     </style>
 </head>
 <body>
@@ -849,44 +911,45 @@
                 <span class="current-lang">EN</span>
                 <div class="lang-dropdown">
                     <span onclick="setLanguage('en')">EN</span>
-                    <span onclick="setLanguage('ar')">AR</span>
-                    <span onclick="setLanguage('ru')">RU</span>
-                    <span onclick="setLanguage('zh')">ZH</span>
                     <span onclick="setLanguage('es')">ES</span>
-                    <span onclick="setLanguage('pt')">PT</span>
-                    <span onclick="setLanguage('fr')">FR</span>
-                    <span onclick="setLanguage('it')">IT</span>
+                    <span onclick="setLanguage('ar')">AR</span>
                 </div>
             </div>
             <button class="cta-btn" data-i18n="inquire">Inquire</button>
         </div>
     </header>
 
-    <!-- HERO (With Fallback) -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-image-container">
+            <!-- Updated Hero Image to reflect 'Legacy' concept -->
             <img class="hero-bg-img" 
                  src="https://uploads.onecompiler.io/4474z9257/44ad3qvge/DSCF0074.webp" 
-                 onerror="this.src='https://images.unsplash.com/photo-1542259646-cd2628ebc950?q=80&w=1974&auto=format&fit=crop'"
+                 onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'"
                  alt="Circolo Legacy">
         </div>
         <div class="hero-content">
-            <h1 class="heading-xl" style="color: #111;" data-i18n="heroTitle">Creating Legacy Experiences</h1>
+            <h1 class="heading-xl" data-i18n="heroTitle">Creating Legacy Experiences</h1>
+            <p style="text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.75rem; margin-top: 1.5rem; opacity: 0.8;" data-i18n="heroSub">Built for humans of now and the future</p>
         </div>
     </section>
 
-    <!-- MANIFIESTO -->
-    <section class="section-spacer manifesto">
+    <!-- MANIFESTO (Updated from PDF) -->
+    <section class="manifesto">
+        <span class="subtitle" data-i18n="manifestoLabel">THE CONCEPT</span>
         <p class="manifesto-text" data-i18n="manifestoText">
-            At Circolo, we’re revolutionizing Legacy Experience as a Service (LEAAS). Bridging the physical and digital worlds with bold innovation, we craft bespoke moments that elevate prestige, drive innovation, and create lasting impact. Turning visions into reality.
+            What is life? Life is a sequence of moments, shaped by people, anchored in places, and remembered through objects.
         </p>
-        <a href="#" class="text-link" data-i18n="enterProject">Unlock the Exceptional</a>
+        <p class="manifesto-sub" style="text-align: center;" data-i18n="manifestoSub">
+            We are The Culture Layer for Living Legacy Experiences.
+        </p>
+        <a href="#" class="text-link" data-i18n="readPaper">Read 2026 Paper</a>
     </section>
 
-    <!-- CLIENT MARQUEE -->
+    <!-- NEW: CLIENT MARQUEE -->
     <div class="marquee-container">
         <div class="marquee-track">
-            <!-- SET 1: LISTA COMPLETA -->
+            <!-- SET 1 -->
             <span class="marquee-item">Blacklane</span>
             <span class="marquee-item">Daos Hub</span>
             <span class="marquee-item">New Tribe Capital</span>
@@ -919,7 +982,7 @@
             <span class="marquee-item">BNB Chain</span>
             <span class="marquee-item">Chi Longevity Services</span>
 
-            <!-- SET 2: DUPLICADO EXACTO -->
+            <!-- SET 2 (Duplicate for Loop) -->
             <span class="marquee-item">Blacklane</span>
             <span class="marquee-item">Daos Hub</span>
             <span class="marquee-item">New Tribe Capital</span>
@@ -954,27 +1017,103 @@
         </div>
     </div>
 
-    <!-- GLOBAL PROJECTS CAROUSEL (Infinite Loop) -->
+    <!-- NEW: THE SHAPE SYSTEM (PILLARS) -->
+    <section class="shapes-section">
+        <div class="text-center" style="margin-bottom: 6rem;">
+            <span class="subtitle" data-i18n="shapesSubtitle">THE SHAPE SYSTEM</span>
+            <h2 class="heading-l" data-i18n="shapesTitle">Design the Circle</h2>
+            <p data-i18n="shapesText">Most industries treat life as fragments. We build the system that makes the pieces compound.</p>
+        </div>
+
+        <div class="shape-grid">
+            <!-- 1. People / Triangle -->
+            <div class="shape-card">
+                <div class="shape-icon-container">
+                    <div class="shape-triangle"></div>
+                </div>
+                <span class="shape-subtitle" data-i18n="pillar1Sub">CONNECTING</span>
+                <h3 class="shape-title" data-i18n="pillar1Title">People</h3>
+                <p class="shape-desc" data-i18n="pillar1Desc">
+                    <strong>Circolo House.</strong> Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.
+                </p>
+            </div>
+
+            <!-- 2. Experiences / Spark -->
+            <div class="shape-card">
+                <div class="shape-icon-container">
+                    <div class="shape-spark"></div>
+                </div>
+                <span class="shape-subtitle" data-i18n="pillar2Sub">CELEBRATING</span>
+                <h3 class="shape-title" data-i18n="pillar2Title">Moments</h3>
+                <p class="shape-desc" data-i18n="pillar2Desc">
+                    <strong>The Spark.</strong> Experiences are not "events." They are engineered legacy moments. Brand launches, rituals, and cultural milestones.
+                </p>
+            </div>
+
+            <!-- 3. Places / Square -->
+            <div class="shape-card">
+                <div class="shape-icon-container">
+                    <div class="shape-square"></div>
+                </div>
+                <span class="shape-subtitle" data-i18n="pillar3Sub">CREATING</span>
+                <h3 class="shape-title" data-i18n="pillar3Title">Places</h3>
+                <p class="shape-desc" data-i18n="pillar3Desc">
+                    <strong>Anchoring Identity.</strong> Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.
+                </p>
+            </div>
+
+            <!-- 4. Editions / Plus -->
+            <div class="shape-card">
+                <div class="shape-icon-container">
+                    <div class="shape-plus"></div>
+                </div>
+                <span class="shape-subtitle" data-i18n="pillar4Sub">CRAFTING</span>
+                <h3 class="shape-title" data-i18n="pillar4Title">Editions</h3>
+                <p class="shape-desc" data-i18n="pillar4Desc">
+                    <strong>Memory Technology.</strong> Objects, books, and collectibles. Not "merch," but culture objects that keep the story alive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: CONTEXT / WHY NOW -->
+    <section class="context-section">
+        <span class="subtitle" data-i18n="contextSubtitle">THE HUMAN PROBLEM</span>
+        <h2 class="heading-l" style="max-width: 800px; text-align: center; margin-bottom: 2rem;" data-i18n="contextTitle">Connection is no longer optional. It is infrastructure.</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>1 in 6</h3>
+                <p data-i18n="stat1">People experiencing loneliness worldwide</p>
+            </div>
+            <div class="stat-item">
+                <h3>$1.07T</h3>
+                <p data-i18n="stat2">Events Industry Growth Forecast</p>
+            </div>
+            <div class="stat-item">
+                <h3>1,019</h3>
+                <p data-i18n="stat3">Branded Residences by 2030</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS CAROUSEL (Updated Labels) -->
     <section class="project-carousel-section">
-        <div class="text-center" style="padding-top: 4rem;">
-            <span class="subtitle" data-i18n="globalSubtitle">THE GLOBAL RUNWAY | 2025</span>
+        <div class="text-center" style="padding-top: 6rem;">
+            <span class="subtitle" data-i18n="globalSubtitle">ICONIC 2026</span>
             <h2 class="heading-l" data-i18n="globalTitle">Across Borders</h2>
-            <p data-i18n="globalText">Selected works from our operations in 86+ countries.</p>
         </div>
 
         <div class="project-carousel-container">
             <div class="project-carousel-track">
-                <!-- SET 1 (7 Items) -->
+                <!-- Items updated to reflect Shapes/Pillars concept lightly in text -->
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
-                        <!-- Imagen actualizada para UAE -->
-                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'"
-                             alt="UAE Project">
+                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'" alt="UAE Project">
                     </div>
-                    <span class="slide-country">UNITED ARAB EMIRATES</span>
-                    <h3 class="slide-title">The Agentic Sunset</h3>
-                    <span class="slide-client">The Louvre Abu Dhabi</span>
+                    <span class="slide-country">ABU DHABI</span>
+                    <h3 class="slide-title">Agentic Sunset</h3>
+                    <span class="slide-client">■ PLACE / LOUVRE</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
@@ -982,15 +1121,15 @@
                     </div>
                     <span class="slide-country">SINGAPORE</span>
                     <h3 class="slide-title">Human Accelerator</h3>
-                    <span class="slide-client">Primal / Sentosa</span>
+                    <span class="slide-client">▲ PEOPLE / PRIMAL</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2538&auto=format&fit=crop" alt="Indonesia Project">
                     </div>
-                    <span class="slide-country">INDONESIA</span>
+                    <span class="slide-country">BALI</span>
                     <h3 class="slide-title">Calma Wellness</h3>
-                    <span class="slide-client">Bali Retreat</span>
+                    <span class="slide-client">■ PLACE / RETREAT</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
@@ -998,50 +1137,32 @@
                     </div>
                     <span class="slide-country">FRANCE</span>
                     <h3 class="slide-title">Sensory Activation</h3>
-                    <span class="slide-client">David Ghiyam</span>
+                    <span class="slide-client">✦ MOMENT / DAVID GHIYAM</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
                         <img src="https://cuscoperu.b-cdn.net/wp-content/uploads/2024/06/Llama-en-Machu-Picchu-pc.jpg.webp" alt="Peru Project">
                     </div>
                     <span class="slide-country">PERU</span>
-                    <h3 class="slide-title">Binance EOY</h3>
-                    <span class="slide-client">Lima Community</span>
+                    <h3 class="slide-title">Lima Community</h3>
+                    <span class="slide-client">▲ PEOPLE / BINANCE</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
-                        <img src="https://media.meer.com/attachments/49319d1f2192568285d62eecacfe806991e59cee/store/fill/1090/613/8a34ea8b6a83a846881e90dcfdcceb81cb7d65b7aed60a1f0bae1c45deba/La-Piedra-del-Penon-de-Guatape-al-fondo.jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop'"
-                             alt="Colombia Project">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop" alt="Colombia Project">
                     </div>
                     <span class="slide-country">COLOMBIA</span>
                     <h3 class="slide-title">Crypto Coffee</h3>
-                    <span class="slide-client">Medellín</span>
+                    <span class="slide-client">+ EDITION / MEDELLIN</span>
                 </div>
-                <div class="project-card-slide">
+                <!-- Duplicate for loop -->
+                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
-                        <!-- Imagen de México Actualizada -->
-                        <img src="https://www.latamairlines.com/content/dam/latamxp/sites/destinos/mexico/hero/MEX.jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?q=80&w=2070&auto=format&fit=crop'"
-                             alt="Mexico Project">
+                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'" alt="UAE Project">
                     </div>
-                    <span class="slide-country">MEXICO</span>
-                    <h3 class="slide-title">Criptoposada</h3>
-                    <span class="slide-client">Mexico City</span>
-                </div>
-                 <!-- INTERNATIONAL ELIMINADO -->
-
-                <!-- SET 2 (Duplicate for loop) -->
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <!-- Imagen actualizada para UAE (Duplicado) -->
-                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'"
-                             alt="UAE Project">
-                    </div>
-                    <span class="slide-country">UNITED ARAB EMIRATES</span>
-                    <h3 class="slide-title">The Agentic Sunset</h3>
-                    <span class="slide-client">The Louvre Abu Dhabi</span>
+                    <span class="slide-country">ABU DHABI</span>
+                    <h3 class="slide-title">Agentic Sunset</h3>
+                    <span class="slide-client">■ PLACE / LOUVRE</span>
                 </div>
                 <div class="project-card-slide">
                     <div class="slide-image-wrapper">
@@ -1049,424 +1170,174 @@
                     </div>
                     <span class="slide-country">SINGAPORE</span>
                     <h3 class="slide-title">Human Accelerator</h3>
-                    <span class="slide-client">Primal / Sentosa</span>
-                </div>
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2538&auto=format&fit=crop" alt="Indonesia Project">
-                    </div>
-                    <span class="slide-country">INDONESIA</span>
-                    <h3 class="slide-title">Calma Wellness</h3>
-                    <span class="slide-client">Bali Retreat</span>
-                </div>
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2673&auto=format&fit=crop" alt="France Project">
-                    </div>
-                    <span class="slide-country">FRANCE</span>
-                    <h3 class="slide-title">Sensory Activation</h3>
-                    <span class="slide-client">David Ghiyam</span>
-                </div>
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://cuscoperu.b-cdn.net/wp-content/uploads/2024/06/Llama-en-Machu-Picchu-pc.jpg.webp" alt="Peru Project">
-                    </div>
-                    <span class="slide-country">PERU</span>
-                    <h3 class="slide-title">Binance EOY</h3>
-                    <span class="slide-client">Lima Community</span>
-                </div>
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://media.meer.com/attachments/49319d1f2192568285d62eecacfe806991e59cee/store/fill/1090/613/8a34ea8b6a83a846881e90dcfdcceb81cb7d65b7aed60a1f0bae1c45deba/La-Piedra-del-Penon-de-Guatape-al-fondo.jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop'"
-                             alt="Colombia Project">
-                    </div>
-                    <span class="slide-country">COLOMBIA</span>
-                    <h3 class="slide-title">Crypto Coffee</h3>
-                    <span class="slide-client">Medellín</span>
-                </div>
-                <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <!-- Imagen de México Actualizada -->
-                        <img src="https://www.latamairlines.com/content/dam/latamxp/sites/destinos/mexico/hero/MEX.jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?q=80&w=2070&auto=format&fit=crop'"
-                             alt="Mexico Project">
-                    </div>
-                    <span class="slide-country">MEXICO</span>
-                    <h3 class="slide-title">Criptoposada</h3>
-                    <span class="slide-client">Mexico City</span>
+                    <span class="slide-client">▲ PEOPLE / PRIMAL</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES GRID (PRODUCTOS) -->
-    <section class="section-spacer" style="padding-top: 0;">
-        <div class="text-center" style="margin-bottom: 2rem;">
-            <span class="subtitle" data-i18n="architectureSubtitle">TAILORED FOR IMPACT</span>
-            <h2 class="heading-l" data-i18n="pillarsTitle">Discover our Services</h2>
-        </div>
-        <div class="grid-container">
-            <article class="card">
-                <div class="card-image-wrapper">
-                    <!-- Imagen de Brands Actualizada -->
-                    <img src="https://uploads.onecompiler.io/44aea5sng/44aea5v29/RedactedAirways-Final-15.webp" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2000&auto=format&fit=crop'"
-                         alt="Brands">
-                </div>
-                <span class="subtitle" data-i18n="brandSubtitle">01 / BRANDS</span>
-                <h3 data-i18n="brandTitle">Tailored for Impact</h3>
-                <p data-i18n="brandText">From concept to execution, we engineer experiences that go beyond the expected, creating deep engagement and lasting impact.</p>
-                <a href="#" class="text-link" data-i18n="viewCases">View Case Studies</a>
-            </article>
-
-            <article class="card">
-                <div class="card-image-wrapper">
-                    <!-- Imagen de Gobiernos con Fallback -->
-                    <img src="https://uploads.onecompiler.io/44aea5sng/44aea5v29/ChatGPT%20Image%2012%20ene%202026,%2014_34_23.png" 
-                         onerror="this.src='https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop'"
-                         alt="Governments">
-                </div>
-                <span class="subtitle" data-i18n="govSubtitle">02 / GOVERNMENTS</span>
-                <h3 data-i18n="govTitle">Innovation Meets Diplomacy</h3>
-                <p data-i18n="govText">Partnering with governments to create transformative initiatives. Legacy meets impact.</p>
-                <a href="#" class="text-link" data-i18n="viewStrategies">View Strategies</a>
-            </article>
-
-            <article class="card">
-                <div class="card-image-wrapper">
-                    <!-- Imagen de Individuos con Fallback -->
-                    <img src="https://uploads.onecompiler.io/44aea5sng/44aea5v29/ChatGPT%20Image%2012%20ene%202026,%2014_19_39.png" 
-                         onerror="this.src='https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=2076&auto=format&fit=crop'"
-                         alt="Individuals">
-                </div>
-                <span class="subtitle" data-i18n="privSubtitle">03 / INDIVIDUALS</span>
-                <h3 data-i18n="privTitle">By Circolo</h3>
-                <p data-i18n="privText">Curating extraordinary experiences for those who seek the exceptional. 2222 Residences, Takeovers, Private Supper Clubs & Lifetime Expeditions.</p>
-                <a href="#" class="text-link" data-i18n="beginJourney">Begin Journey</a>
-            </article>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: PRESS (Visual Editorial Grid - 4 Columns) -->
+    <!-- PRESS SECTION (UPDATED REAL LINKS & IMAGES) -->
     <section class="press-section">
-        <div class="text-center" style="margin-bottom: 4rem;">
-            <span class="subtitle" data-i18n="pressSubtitle">PRESS</span>
+        <div class="text-center" style="margin-bottom: 6rem;">
+            <span class="subtitle" data-i18n="pressSubtitle">SIGNAL & PRESS</span>
         </div>
-        <div class="press-grid" id="pressGrid">
-            
+        <div class="press-grid">
             <!-- 1. CoinMarketCap -->
-            <a href="https://coinmarketcap.com/community/articles/68a8266f8c34f9397ee4ecd9/" target="_blank" class="press-card">
+             <a href="https://coinmarketcap.com/community/articles/68a8266f8c34f9397ee4ecd9/" target="_blank" class="press-card">
                 <div class="press-image-wrapper">
-                    <img src="https://academy-public.coinmarketcap.com/srd-optimized-uploads/13c929bec0c7456dba7a8da772b7865c.png" 
-                         onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=2070&auto=format&fit=crop'"
-                         alt="CoinMarketCap Feature">
+                    <img src="https://academy-public.coinmarketcap.com/srd-optimized-uploads/13c929bec0c7456dba7a8da772b7865c.png" onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=2070&auto=format&fit=crop'" alt="CoinMarketCap Feature">
                 </div>
                 <span class="press-meta">COINMARKETCAP</span>
                 <h4 class="press-title">Circolo Community: A New Era of Connection</h4>
                 <p class="press-description">CoinMarketCap highlights how Circolo is redefining community engagement through immersive experiences.</p>
-                <span class="press-link-text">Read Article</span>
             </a>
-
             <!-- 2. Khaleej Times -->
             <a href="https://www.khaleejtimes.com/business/the-exclusive-token2049-private-dinner-everyones-talking-about" target="_blank" class="press-card">
                 <div class="press-image-wrapper">
-                    <img src="https://imgengine.khaleejtimes.com/khaleejtimes-english/2025-04-24/uepxcsdn/TOKEN49IXI.jpeg?width=1200&height=800&format=auto" alt="Exclusive Token2049 Dinner">
+                    <img src="https://imgengine.khaleejtimes.com/khaleejtimes-english/2025-04-24/uepxcsdn/TOKEN49IXI.jpeg?width=1200&height=800&format=auto" alt="Khaleej Times Feature">
                 </div>
                 <span class="press-meta">KHALEEJ TIMES</span>
                 <h4 class="press-title">The Exclusive TOKEN2049 Private Dinner</h4>
                 <p class="press-description">Circolo and IXI Labs hosted an unforgettable evening at CÉ LA VI Dubai, bringing together Web3 leaders.</p>
-                <span class="press-link-text">Read Article</span>
             </a>
-
-            <!-- 3. The Blockopedia (AREPA) -->
+            <!-- 3. Blockopedia (Arepa) -->
             <a href="https://theblockopedia.com/circolo-makes-history-at-token2049-the-first-real-arepa-in-the-world-gets-tokenized/" target="_blank" class="press-card">
                 <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/05/Untitled-design-1_11zon.png" alt="First Tokenized Arepa">
+                    <img src="https://theblockopedia.com/wp-content/uploads/2025/05/Untitled-design-1_11zon.png" alt="Tokenized Arepa">
                 </div>
                 <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">Circolo Makes History: The First Real Arepa Gets Tokenized</h4>
-                <p class="press-description">A groundbreaking moment at TOKEN2049 where culinary tradition meets blockchain innovation.</p>
-                <span class="press-link-text">Read Article</span>
+                <h4 class="press-title">History at TOKEN2049: The First Tokenized Arepa</h4>
+                <p class="press-description">A groundbreaking moment where culinary tradition meets blockchain innovation.</p>
             </a>
-
-            <!-- 4. The Blockopedia (Impactful Experiences) -->
+            <!-- 4. Blockopedia (Impact) -->
             <a href="https://theblockopedia.com/circolo-curates-the-most-impactful-web3-experiences-during-token2049-dubai/" target="_blank" class="press-card">
                 <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/04/Untitled-design-16.png" alt="Token2049 Dubai Impact">
+                    <img src="https://theblockopedia.com/wp-content/uploads/2025/04/Untitled-design-16.png" alt="Impactful Experiences">
                 </div>
                 <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">Circolo Curates The Most Impactful Web3 Experiences</h4>
+                <h4 class="press-title">Curating Impactful Web3 Experiences</h4>
                 <p class="press-description">Defining the standard for immersive Web3 events, blending luxury and innovation in Dubai.</p>
-                <span class="press-link-text">Read Article</span>
             </a>
-
-            <!-- NOTICIAS OCULTAS -->
-            
-            <!-- 5. Coin Gabbar -->
-            <a href="https://www.coingabbar.com/en/crypto-press-release/circolo-web3-events-at-token2049-dubai-2025" target="_blank" class="press-card press-hidden">
-                <div class="press-image-wrapper">
-                    <img src="https://d3iuzwoiyg9qa8.cloudfront.net/webadmin/storage/public/crypto-news/April2025/temp680a017b3adff.webp" alt="Token2049 Dubai">
-                </div>
-                <span class="press-meta">COIN GABBAR</span>
-                <h4 class="press-title">Circolo Showcases Web3 Culture at TOKEN2049 with Iconic Events</h4>
-                <p class="press-description">Leading the conversation on the future of Web3 with immersive experiences in Dubai.</p>
-                <span class="press-link-text">Read Article</span>
-            </a>
-
-            <!-- 6. Abu Dhabi -->
-            <a href="https://theblockopedia.com/abu-dhabi-prepares-for-a-december-takeover-and-circolo-is-quietly-at-the-center-of-it/" target="_blank" class="press-card press-hidden">
-                <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/12/Untitled-design-2025-12-03T104658.758.png" alt="Abu Dhabi Takeover">
-                </div>
-                <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">Abu Dhabi Prepares for a December Takeover</h4>
-                <p class="press-description">How Circolo is quietly positioning itself at the center of the capital's cultural shift.</p>
-                <span class="press-link-text">Read Article</span>
-            </a>
-
-            <!-- 7. Binance -->
-            <a href="https://www.binance.com/es/square/post/32125271230290" target="_blank" class="press-card press-hidden">
-                <div class="press-image-wrapper">
-                    <img src="https://www.binance.com/bapi/fe/resource/image?image=aHR0cHM6Ly9wdWJsaWMuYm5ic3RhdGljLmNvbS9zdGF0aWMvY29udGVudC9zcXVhcmUvaW1hZ2VzLzhiMzVmZTAwOTdiYTRhNWY5NDhhMjAzMjVjYjg3ZDJmLmpwZw==&level=lg" alt="Binance Lima">
-                </div>
-                <span class="press-meta">BINANCE SQUARE</span>
-                <h4 class="press-title">Circolo Community: Connecting in Lima</h4>
-                <p class="press-description">Fostering global connections and community growth in the heart of Peru.</p>
-                <span class="press-link-text">Read Article</span>
-            </a>
-
-            <!-- 8. Samuel J / Token2049 -->
-            <a href="https://theblockopedia.com/from-soul-to-sentosa-samuel-j-to-perform-at-circolo-house-fortoken2049/" target="_blank" class="press-card press-hidden">
-                <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/10/Untitled-design-7.png" alt="Soul to Sentosa">
-                </div>
-                <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">From Soul to Sentosa: Samuel J at Circolo House</h4>
-                <p class="press-description">An exclusive performance blending soul music with the vibrant energy of Token2049.</p>
-                <span class="press-link-text">Read Article</span>
-            </a>
-
-        </div>
-
-        <div class="press-expand-container">
-            <button class="press-expand-btn" onclick="togglePress()" data-i18n="viewAllNews">VIEW ALL NEWS</button>
         </div>
     </section>
 
-    <!-- NEW SECTION: INSTAGRAM STORIES (Horizontal Scroll & Lightbox) -->
-    <section class="stories-section">
-        <div class="text-center" style="margin-bottom: 2rem;">
-            <span class="subtitle" data-i18n="storiesSubtitle">CURATED MOMENTS</span>
-        </div>
-        <div class="stories-scroll-wrapper">
-            <!-- Story 1: IXI Cipher Dinner -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/p/DJja1afxkXq/embed')">
-                <img src="https://uploads.onecompiler.io/4474z9257/44ad3qvge/DSCF0074.webp" 
-                     onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop'" 
-                     class="story-img" alt="IXI Cipher Dinner">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">IXI CIPHER<br>DINNER</span></div>
-            </div>
-
-            <!-- Story 2: Pitches -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/reel/DJHHO5RI5Al/embed')">
-                <img src="https://uploads.onecompiler.io/44aea5sng/44aea5v29/Captura%20de%20pantalla%202026-01-12%20a%20las%2010.03.56%E2%80%AFp.m..png" 
-                     onerror="this.src='https://images.unsplash.com/photo-1550969448-3f96b896b022?q=80&w=2070&auto=format&fit=crop'" 
-                     class="story-img" alt="Pitches">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">PITCHES</span></div>
-            </div>
-
-            <!-- Story 3: GM GM Break fest -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/reel/DJGfCJBxn33/embed')">
-                <img src="https://uploads.onecompiler.io/44aea5sng/44aea5v29/DSC06990.webp" 
-                     onerror="this.src='https://images.unsplash.com/photo-1533089862017-62f442377983?q=80&w=2070&auto=format&fit=crop'" 
-                     class="story-img" alt="GM GM Break fest">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">GM GM<br>BREAK FEST</span></div>
-            </div>
-
-            <!-- Story 4: Blacklane Dinner -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/reel/DHvl6qDz7bL/embed')">
-                <img src="https://www.instagram.com/p/DHvl6qDz7bL/media/?size=l" 
-                     onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop'" 
-                     class="story-img" alt="Blacklane Dinner">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">BLACKLANE DINNER</span></div>
-            </div>
-
-            <!-- Story 5: Latino Sunday -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/reel/DI_LECDzLY8/embed')">
-                <img src="https://www.instagram.com/p/DI_LECDzLY8/media/?size=l" 
-                     onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1950&auto=format&fit=crop'" 
-                     class="story-img" alt="Latino Sunday">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">LATINO SUNDAY</span></div>
-            </div>
-
-            <!-- Story 6: Nomad Day -->
-            <div class="story-card" onclick="openInstaModal('https://www.instagram.com/reel/DJDu5qwxJPy/embed')">
-                <img src="https://www.instagram.com/p/DJDu5qwxJPy/media/?size=l" 
-                     onerror="this.src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop'" 
-                     class="story-img" alt="Nomad Day">
-                <div class="story-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                <div class="story-overlay"><span class="story-title">NOMAD DAY</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TEAM (The Collective) -->
-    <section class="section-spacer" style="background-color: #fdfdfd; padding-top: 4rem;">
-        <div class="text-center" style="margin-bottom: 4rem;">
+    <!-- NEW TEAM DIRECTORY (CLEAN LIST - NO PHOTOS) -->
+    <section class="directory-section">
+        <div class="text-center" style="margin-bottom: 6rem;">
             <span class="subtitle" data-i18n="teamSubtitle">THE COLLECTIVE</span>
             <h2 class="heading-l" data-i18n="teamTitle">Minds Behind the Legacy</h2>
         </div>
+        <div class="directory-container">
+            <div class="directory-list">
+                
+                <!-- 1. Alvaro Daza -->
+                <a href="https://www.linkedin.com/in/alvdaza/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Alvaro Daza</span>
+                        <span class="directory-role">FOUNDER & CEO</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-        <div class="team-grid-container">
-            <!-- 1. Alvaro Daza -->
-            <a href="https://www.linkedin.com/in/alvdaza/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <!-- Fallback añadido por si el CDN falla -->
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67fca235adda3bf7cd0cbd2c_47559e51-11cf-493b-9fd5-eced4f810784%202.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Alvaro Daza">
-                    <!-- Icono LinkedIn -->
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Alvaro Daza</h3>
-                <span class="team-role" data-i18n="roleFounder">FOUNDER & CEO</span>
-            </a>
-            
-            <!-- 2. Marco Giovanni (LINKEDIN ACTUALIZADO) -->
-            <a href="https://www.linkedin.com/in/marcodegiovanni007/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe7606383a956b6c9fb_people%20photos-03.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Marco Giovanni">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Marco Giovanni</h3>
-                <span class="team-role" data-i18n="roleCoo">CO-FOUNDER & COO</span>
-            </a>
+                <!-- 2. Marco Giovanni -->
+                <a href="https://www.linkedin.com/in/marcodegiovanni007/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Marco Giovanni</span>
+                        <span class="directory-role">CO-FOUNDER & COO</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 3. Camilo Romero -->
-            <a href="https://www.linkedin.com/in/camilo-romero-molano-6037a590/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9eTSy1tM3-Q/profile-displayphoto-crop_800_800/B4EZfXi62rGcAI-/0/1751667949450?e=1769644800&v=beta&t=AMCBfQhuvHLIoIoTG8_9TqClXwhdy1JREdRWiw4CBH8" 
-                         onerror="this.src='https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop'"
-                         alt="Camilo Romero">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Camilo Romero</h3>
-                <span class="team-role" data-i18n="roleDirectorLatam">DIRECTOR LATAM</span>
-            </a>
+                <!-- 3. Camilo Romero -->
+                <a href="https://www.linkedin.com/in/camilo-romero-molano-6037a590/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Camilo Romero</span>
+                        <span class="directory-role">DIRECTOR LATAM</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 4. Carolina Mejía -->
-            <a href="https://www.linkedin.com/in/carolina-mejia-12989120b/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe8b1afdf10f24ddb22_people%20photos-04.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop'"
-                         alt="Carolina Mejía">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Carolina Mejía</h3>
-                <span class="team-role" data-i18n="rolePartnerships">PARTNERSHIPS AND MOMENTUM</span>
-            </a>
+                <!-- 4. Carolina Mejía -->
+                <a href="https://www.linkedin.com/in/carolina-mejia-12989120b/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Carolina Mejía</span>
+                        <span class="directory-role">PARTNERSHIPS AND MOMENTUM</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 5. Fares AlDika -->
-            <a href="https://www.linkedin.com/in/fares-al-dika/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe9261184f88079f138_people%20photos-07.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Fares AlDika">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Fares AlDika</h3>
-                <span class="team-role" data-i18n="roleFinancial">FINANCIAL MANAGER</span>
-            </a>
+                <!-- 5. Fares AlDika -->
+                <a href="https://www.linkedin.com/in/fares-al-dika/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Fares AlDika</span>
+                        <span class="directory-role">FINANCIAL MANAGER</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 6. Juan Romero -->
-            <a href="https://www.linkedin.com/in/juan-felipe-romero-lopez/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe7606383a956b6c9d2_people%20photos-05.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Juan Romero">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Juan Romero</h3>
-                <span class="team-role" data-i18n="roleOperations">OPERATIONS ASSISTANT</span>
-            </a>
+                <!-- 6. Juan Romero -->
+                <a href="https://www.linkedin.com/in/juan-felipe-romero-lopez/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Juan Romero</span>
+                        <span class="directory-role">OPERATIONS ASSISTANT</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 7. Melissa Aponte -->
-            <a href="https://www.linkedin.com/in/melissaponte/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f760ce4af92f795c8b8a11_people%20photos-08-09.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop'"
-                         alt="Melissa Aponte">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Melissa Aponte</h3>
-                <span class="team-role" data-i18n="rolePeople">PEOPLE AND IMPACT</span>
-            </a>
+                <!-- 7. Melissa Aponte -->
+                <a href="https://www.linkedin.com/in/melissaponte/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Melissa Aponte</span>
+                        <span class="directory-role">PEOPLE AND IMPACT</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 8. Valentin Sierra -->
-            <a href="https://www.linkedin.com/in/valentin-sierra-colombia/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe772be2a46e7ec13a8_people%20photos-08.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop'"
-                         alt="Valentin Sierra">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Valentin Sierra</h3>
-                <span class="team-role" data-i18n="roleGovRelations">GOVERNMENT RELATIONS</span>
-            </a>
+                <!-- 8. Valentin Sierra -->
+                <a href="https://www.linkedin.com/in/valentin-sierra-colombia/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Valentin Sierra</span>
+                        <span class="directory-role">GOVERNMENT RELATIONS</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
 
-            <!-- 9. María Rosero -->
-            <div class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f760be5dd36a3c9d7d4d19_people%20photos-08-10.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1598550874175-4d7112ee7f43?q=80&w=2070&auto=format&fit=crop'"
-                         alt="María Rosero">
+                <!-- 9. María Rosero (No link originally) -->
+                <div class="directory-item" style="cursor: default;">
+                    <div class="directory-info">
+                        <span class="directory-name">María Rosero</span>
+                        <span class="directory-role">SALES COORDINATOR</span>
+                    </div>
+                    <!-- Empty link for visual balance if needed, or remove -->
                 </div>
-                <h3 class="team-name">María Rosero</h3>
-                <span class="team-role" data-i18n="roleSales">SALES COORDINATOR</span>
+
+                <!-- 10. Andres Cañas -->
+                <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Andres Cañas</span>
+                        <span class="directory-role">EXPERIENCE EXECUTIVE</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
+
+                <!-- 11. Ayah Okasha (No link originally) -->
+                <div class="directory-item" style="cursor: default;">
+                    <div class="directory-info">
+                        <span class="directory-name">Ayah Okasha</span>
+                        <span class="directory-role">EXPERIENCE MANAGER</span>
+                    </div>
+                </div>
+
+                <!-- 12. Rahath Aaliya -->
+                <a href="https://www.linkedin.com/in/rahathaaliya/" target="_blank" class="directory-item">
+                    <div class="directory-info">
+                        <span class="directory-name">Rahath Aaliya</span>
+                        <span class="directory-role">MARKETING & COMMUNITY CO-ORDINATOR</span>
+                    </div>
+                    <span class="directory-link">LINKEDIN ↗</span>
+                </a>
+
             </div>
-
-            <!-- 10. Andres Cañas -->
-            <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f75fe7072cea7272c6656d_people%20photos-06.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Andres Cañas">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Andres Cañas</h3>
-                <span class="team-role" data-i18n="roleExpExec">EXPERIENCE EXECUTIVE</span>
-            </a>
-
-            <!-- 11. Ayah Okasha -->
-            <div class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/67f92be38314eb3ab3e1c8ff_people%20photos-90.jpg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1887&auto=format&fit=crop'"
-                         alt="Ayah Okasha">
-                </div>
-                <h3 class="team-name">Ayah Okasha</h3>
-                <span class="team-role" data-i18n="roleExpManager">EXPERIENCE MANAGER</span>
-            </div>
-
-            <!-- 12. Rahath Aaliya -->
-            <a href="https://www.linkedin.com/in/rahathaaliya/" target="_blank" class="team-card-link">
-                <div class="team-card-image-wrapper">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbe36/685517420c7d772e0f5603d5_WhatsApp%20Image%202025-06-19%20at%2013.40.56.jpeg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1534751516015-0d4006c80e4e?q=80&w=1961&auto=format&fit=crop'"
-                         alt="Rahath Aaliya">
-                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <h3 class="team-name">Rahath Aaliya</h3>
-                <span class="team-role" data-i18n="roleMarketingCoord">MARKETING & COMMUNITY CO-ORDINATOR</span>
-            </a>
         </div>
     </section>
 
@@ -1474,7 +1345,7 @@
     <footer>
         <div class="footer-col">
             <div class="logo" style="position: relative; left: 0; transform: none;">CIRCOLO</div>
-            <p style="font-size: 0.75rem; margin: 1rem 0 0 0; color: #999;">© 2026 Circolo Life.</p>
+            <p style="font-size: 0.75rem; margin: 1rem 0 0 0; color: #888;">© 2026 Circolo Life. LEAAS.</p>
         </div>
         <div class="footer-col" style="flex-direction: row; gap: 3rem;">
             <a href="#" class="footer-link">Instagram</a>
@@ -1483,172 +1354,136 @@
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.link/0udz77" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-        </svg>
-    </a>
-
-    <!-- MODAL -->
-    <div id="insta-modal" class="modal" onclick="closeInstaModal(event)">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeInstaModal(event)">×</span>
-            <iframe id="insta-frame" class="instagram-embed" src="" allowtransparency="true" allowfullscreen="true" scrolling="no"></iframe>
+    <!-- WHATSAPP WIDGET (UNIFICADO) -->
+    <div class="whatsapp-widget">
+        <!-- Trigger Button (Icono Principal) -->
+        <div class="whatsapp-trigger">
+            <!-- Icono Plus que sugiere apertura, o el de WA -->
+            <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+        </div>
+        
+        <!-- Opciones Desplegables -->
+        <div class="whatsapp-options">
+            <a href="https://wa.link/aq8x7a" target="_blank" class="whatsapp-opt" data-label="Contact I">
+                <svg class="whatsapp-icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+            <a href="https://wa.link/0udz77" target="_blank" class="whatsapp-opt" data-label="Contact II">
+                <svg class="whatsapp-icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
         </div>
     </div>
 
     <script>
-        // Diccionario de Traducciones
+        // Translations based on the new concept
         const translations = {
             en: {
                 menu: "Menu",
                 inquire: "Inquire",
                 heroTitle: "Creating Legacy Experiences",
-                manifestoText: "At Circolo, we’re revolutionizing Legacy Experience as a Service (LEAAS). Bridging the physical and digital worlds with bold innovation, we craft bespoke moments that elevate prestige, drive innovation, and create lasting impact. Turning visions into reality.",
-                enterProject: "Unlock the Exceptional",
-                globalSubtitle: "THE GLOBAL RUNWAY | 2025",
+                heroSub: "BUILT FOR HUMANS OF NOW AND THE FUTURE",
+                manifestoLabel: "THE CONCEPT",
+                manifestoText: "Life is a sequence of moments, shaped by people, anchored in places, and remembered through objects.",
+                manifestoSub: "We are The Culture Layer for Living Legacy Experiences.",
+                readPaper: "Read 2026 Paper",
+                shapesSubtitle: "THE SHAPE SYSTEM",
+                shapesTitle: "Design the Circle",
+                shapesText: "Most industries treat life as fragments. We build the system that makes the pieces compound.",
+                pillar1Sub: "CONNECTING",
+                pillar1Title: "People",
+                pillar1Desc: "Circolo House. Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.",
+                pillar2Sub: "CELEBRATING",
+                pillar2Title: "Moments",
+                pillar2Desc: "The Spark. Experiences are not 'events.' They are engineered legacy moments. Brand launches, rituals, and cultural milestones.",
+                pillar3Sub: "CREATING",
+                pillar3Title: "Places",
+                pillar3Desc: "Anchoring Identity. Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.",
+                pillar4Sub: "CRAFTING",
+                pillar4Title: "Editions",
+                pillar4Desc: "Memory Technology. Objects, books, and collectibles. Not 'merch,' but culture objects that keep the story alive.",
+                contextSubtitle: "THE HUMAN PROBLEM",
+                contextTitle: "Connection is no longer optional. It is infrastructure.",
+                stat1: "People experiencing loneliness worldwide",
+                stat2: "Events Industry Growth Forecast",
+                stat3: "Branded Residences by 2030",
+                globalSubtitle: "ICONIC 2026",
                 globalTitle: "Across Borders",
-                globalText: "Selected works from our operations in 86+ countries. Defining excellence worldwide.",
-                projectsSubtitle: "CURATED WORKS 2025",
-                projectsTitle: "A Year of Distinction",
-                architectureSubtitle: "TAILORED FOR IMPACT",
-                pillarsTitle: "Discover our Services",
-                pillarsText: "From concept to execution, we engineer experiences that go beyond the expected, creating deep engagement and lasting impact.",
-                brandSubtitle: "01 / BRANDS",
-                brandTitle: "Tailored for Impact",
-                brandText: "From concept to execution, we engineer experiences that go beyond the expected, creating deep engagement and lasting impact. Experience Design, Brand Activations & Strategic Collaborations.",
-                viewCases: "View Case Studies",
-                govSubtitle: "02 / GOVERNMENTS",
-                govTitle: "Innovation Meets Diplomacy",
-                govText: "Partnering with governments to create transformative initiatives. Strategic Expos, Investment Positioning & Smart Cities. Legacy meets impact.",
-                viewStrategies: "View Strategies",
-                privSubtitle: "03 / INDIVIDUALS",
-                privTitle: "By Circolo",
-                privText: "Curating extraordinary experiences for those who seek the exceptional. 2222 Residences, Takeovers, Private Supper Clubs & Lifetime Expeditions.",
-                beginJourney: "Begin Journey",
-                pressSubtitle: "PRESS",
-                viewAllNews: "VIEW ALL NEWS",
-                viewLessNews: "VIEW LESS",
-                pressArticle1: "Abu Dhabi Prepares for a December Takeover",
-                pressArticle2: "Innovation meets Diplomacy in Dubai",
-                pressArticle3: "The Future of Legacy Experience",
-                storiesSubtitle: "CURATED MOMENTS",
+                pressSubtitle: "SIGNAL & PRESS",
                 teamSubtitle: "THE COLLECTIVE",
                 teamTitle: "Minds Behind the Legacy",
-                roleFounder: "FOUNDER & CEO",
-                roleCoo: "CO-FOUNDER & COO",
-                roleMarketing: "MARKETING DIRECTOR",
-                roleDirectorLatam: "DIRECTOR LATAM",
-                rolePartnerships: "PARTNERSHIPS AND MOMENTUM",
-                roleFinancial: "FINANCIAL MANAGER",
-                roleOperations: "OPERATIONS ASSISTANT",
-                rolePeople: "PEOPLE AND IMPACT",
-                roleGovRelations: "GOVERNMENT RELATIONS",
-                roleSales: "SALES COORDINATOR",
-                roleExpExec: "EXPERIENCE EXECUTIVE",
-                roleExpManager: "EXPERIENCE MANAGER",
-                roleMarketingCoord: "MARKETING & COMMUNITY CO-ORDINATOR",
                 contact: "Contact"
             },
             es: {
                 menu: "Menú",
                 inquire: "Consultar",
                 heroTitle: "Creando Experiencias de Legado",
-                manifestoText: "En Circolo, revolucionamos la Experiencia de Legado como Servicio (LEAAS). Uniendo los mundos físico y digital con innovación audaz, creamos momentos a medida que elevan el prestigio, impulsan la innovación y generan un impacto duradero. Convirtiendo visiones en realidad.",
-                enterProject: "Desbloquea lo Excepcional",
-                globalSubtitle: "LA PASARELA GLOBAL | 2025",
-                globalTitle: "A través de Fronteras",
-                globalText: "Obras seleccionadas de nuestras operaciones en más de 86 países. Definiendo la excelencia en todo el mundo.",
-                projectsSubtitle: "OBRAS CURADAS 2025",
-                projectsTitle: "Un Año de Distinción",
-                architectureSubtitle: "HECHO A LA MEDIDA",
-                pillarsTitle: "Descubre nuestros Servicios",
-                pillarsText: "Desde el concepto hasta la ejecución, diseñamos experiencias que van más allá de lo esperado, creando un compromiso profundo y un impacto duradero.",
-                brandSubtitle: "01 / MARCAS",
-                brandTitle: "Hecho para Impactar",
-                brandText: "Desde el concepto hasta la ejecución, diseñamos experiencias que van más allá de lo esperado. Diseño de Experiencias, Activaciones de Marca y Colaboraciones Estratégicas.",
-                viewCases: "Ver Casos de Estudio",
-                govSubtitle: "02 / GOBIERNOS",
-                govTitle: "Innovación y Diplomacia",
-                govText: "Nos asociamos con gobiernos para crear iniciativas transformadoras. Exposiciones Estratégicas, Posicionamiento de Inversiones y Ciudades Inteligentes.",
-                viewStrategies: "Ver Estrategias",
-                privSubtitle: "03 / INDIVIDUOS",
-                privTitle: "Por Circolo",
-                privText: "Curaduría de experiencias extraordinarias para quienes buscan lo excepcional. Residencias 2222, Takeovers, Cenas Privadas y Expediciones Únicas.",
-                beginJourney: "Comenzar Viaje",
-                pressSubtitle: "PRENSA",
-                viewAllNews: "VER TODAS LAS NOTICIAS",
-                viewLessNews: "VER MENOS",
-                pressArticle1: "Abu Dhabi se Prepara para un Takeover en Diciembre",
-                pressArticle2: "La Innovación se encuentra con la Diplomacia en Dubái",
-                pressArticle3: "El Futuro de la Experiencia de Legado",
-                storiesSubtitle: "MOMENTOS CURADOS",
+                heroSub: "CONSTRUIDO PARA HUMANOS DE HOY Y DEL FUTURO",
+                manifestoLabel: "EL CONCEPTO",
+                manifestoText: "La vida es una secuencia de momentos, moldeados por personas, anclados en lugares y recordados a través de objetos.",
+                manifestoSub: "Somos la Capa Cultural para Experiencias de Legado Vivo.",
+                readPaper: "Leer Paper 2026",
+                shapesSubtitle: "SISTEMA DE FORMAS",
+                shapesTitle: "Diseña el Círculo",
+                shapesText: "La mayoría de industrias tratan la vida como fragmentos. Nosotros construimos el sistema que hace que las piezas se compongan.",
+                pillar1Sub: "CONECTAR",
+                pillar1Title: "Personas",
+                pillar1Desc: "Circolo House. Confianza, pertenencia y señal. No llenamos salas; curamos el patrocinio que impulsa la colaboración.",
+                pillar2Sub: "CELEBRAR",
+                pillar2Title: "Momentos",
+                pillar2Desc: "La Chispa. Las experiencias no son 'eventos'. Son momentos de legado diseñados. Lanzamientos y rituales culturales.",
+                pillar3Sub: "CREAR",
+                pillar3Title: "Lugares",
+                pillar3Desc: "Anclar la Identidad. Donde el gusto se vuelve permanente. Conceptos de hospitalidad, renovaciones y pabellones.",
+                pillar4Sub: "ELABORAR",
+                pillar4Title: "Ediciones",
+                pillar4Desc: "Tecnología de Memoria. Objetos, libros y coleccionables. No 'merch', sino objetos culturales que mantienen viva la historia.",
+                contextSubtitle: "EL PROBLEMA HUMANO",
+                contextTitle: "La conexión ya no es opcional. Es infraestructura.",
+                stat1: "Personas experimentando soledad globalmente",
+                stat2: "Pronóstico de Crecimiento Industria Eventos",
+                stat3: "Residencias de Marca para 2030",
+                globalSubtitle: "ICONIC 2026",
+                globalTitle: "A Través de Fronteras",
+                pressSubtitle: "SEÑAL Y PRENSA",
                 teamSubtitle: "EL COLECTIVO",
                 teamTitle: "Mentes tras el Legado",
-                roleFounder: "FUNDADOR & CEO",
-                roleCoo: "CO-FUNDADOR & COO",
-                roleMarketing: "DIRECTOR DE MARKETING",
-                roleDirectorLatam: "DIRECTOR LATAM",
-                rolePartnerships: "ALIANZAS Y MOMENTUM",
-                roleFinancial: "GERENTE FINANCIERO",
-                roleOperations: "ASISTENTE DE OPERACIONES",
-                rolePeople: "PERSONAS E IMPACTO",
-                roleGovRelations: "RELACIONES GUBERNAMENTALES",
-                roleSales: "COORDINADOR DE VENTAS",
-                roleExpExec: "EJECUTIVO DE EXPERIENCIA",
-                roleExpManager: "GERENTE DE EXPERIENCIA",
-                roleMarketingCoord: "COORDINADOR DE MARKETING Y COMUNIDAD",
                 contact: "Contacto"
             },
             ar: {
                 menu: "القائمة",
                 inquire: "استفسار",
                 heroTitle: "خلق تجارب الإرث",
-                manifestoText: "في Circolo، نحدث ثورة في تجربة الإرث كخدمة (LEAAS). من خلال ربط العوالم المادية والرقمية بابتكار جريء، نصوغ لحظات مخصصة ترفع المكانة وتدفع الابتكار وتخلق تأثيرًا دائمًا. تحويل الرؤى إلى واقع.",
-                enterProject: "افتح الاستثنائي",
-                globalSubtitle: "المسار العالمي | 2025",
+                heroSub: "بنيت من أجل البشر الآن وفي المستقبل",
+                manifestoLabel: "المفهوم",
+                manifestoText: "الحياة سلسلة من اللحظات، تشكلها الناس، وترتكز في الأماكن، وتُذكر من خلال الأشياء.",
+                manifestoSub: "نحن الطبقة الثقافية لتجارب الإرث الحية.",
+                readPaper: "اقرأ ورقة 2026",
+                shapesSubtitle: "نظام الأشكال",
+                shapesTitle: "صمم الدائرة",
+                shapesText: "تتعامل معظم الصناعات مع الحياة كشظايا. نحن نبني النظام الذي يجعل القطع تتكامل.",
+                pillar1Sub: "الاتصال",
+                pillar1Title: "الناس",
+                pillar1Desc: "بيت سيركولو. الثقة والانتماء والإشارة. نحن لا نملأ غرفة فقط؛ نحن ننسق الرعاية التي تقود تدفق الصفقات والتعاون.",
+                pillar2Sub: "الاحتفال",
+                pillar2Title: "اللحظات",
+                pillar2Desc: "الشرارة. التجارب ليست 'أحداثًا'. إنها لحظات إرث مصممة هندسيًا. إطلاق العلامات التجارية والطقوس والمعالم الثقافية.",
+                pillar3Sub: "الإبداع",
+                pillar3Title: "الأماكن",
+                pillar3Desc: "ترسيخ الهوية. حيث يصبح الذوق دائمًا. مفاهيم الضيافة والتجديدات والأجنحة التي تحمل الثقافة.",
+                pillar4Sub: "الصناعة",
+                pillar4Title: "الإصدارات",
+                pillar4Desc: "تكنولوجيا الذاكرة. الأشياء والكتب والمقتنيات. ليست 'بضائع'، بل أشياء ثقافية تبقي القصة حية.",
+                contextSubtitle: "المشكلة البشرية",
+                contextTitle: "الاتصال لم يعد اختياريًا. إنه بنية تحتية.",
+                stat1: "شخص يعاني من الوحدة في جميع أنحاء العالم",
+                stat2: "توقعات نمو صناعة الفعاليات",
+                stat3: "المساكن ذات العلامات التجارية بحلول عام 2030",
+                globalSubtitle: "أيقونة 2026",
                 globalTitle: "عبر الحدود",
-                globalText: "أعمال مختارة من عملياتنا في أكثر من 86 دولة. تحديد التميز في جميع أنحاء العالم.",
-                projectsSubtitle: "أعمال مختارة 2025",
-                projectsTitle: "عام من التميز",
-                architectureSubtitle: "مصممة للتأثير",
-                pillarsTitle: "اكتشف خدماتنا",
-                pillarsText: "من المفهوم إلى التنفيذ، نهندس تجارب تتجاوز المتوقع، وتخلق تفاعلًا عميقًا وتأثيرًا دائمًا.",
-                brandSubtitle: "01 / العلامات التجارية",
-                brandTitle: "مصممة للتأثير",
-                brandText: "تصميم التجارب، تفعيلات العلامة التجارية والتعاون الاستراتيجي.",
-                viewCases: "عرض دراسات الحالة",
-                govSubtitle: "02 / الحكومات",
-                govTitle: "الابتكار يلتقي بالدبلوماسية",
-                govText: "الشراكة مع الحكومات لخلق مبادرات تحويلية. المعارض الاستراتيجية، تحديد مواقع الاستثمار والمدن الذكية.",
-                viewStrategies: "عرض الاستراتيجيات",
-                privSubtitle: "03 / الأفراد",
-                privTitle: "بواسطة Circolo",
-                privText: "تنسيق تجارب استثنائية لأولئك الذين يسعون للاستثناء. إقامات 2222، الاستحواذات، نوادي العشاء الخاصة والرحلات الاستكشافية.",
-                beginJourney: "ابدأ الرحلة",
-                pressSubtitle: "الصحافة",
-                viewAllNews: "عرض كل الأخبار",
-                viewLessNews: "عرض أقل",
-                pressArticle1: "أبوظبي تستعد لاستحواذ في ديسمبر",
-                pressArticle2: "الابتكار يلتقي بالدبلوماسية في دبي",
-                pressArticle3: "مستقبل تجربة الإرث",
-                storiesSubtitle: "لحظات منسقة",
+                pressSubtitle: "الإشارة والصحافة",
                 teamSubtitle: "المجموعة",
                 teamTitle: "عقول خلف الإرث",
-                roleFounder: "المؤسس والرئيس التنفيذي",
-                roleCoo: "المؤسس المشارك ومدير العمليات",
-                roleMarketing: "مدير التسويق",
-                roleDirectorLatam: "مدير أمريكا اللاتينية",
-                rolePartnerships: "الشراكات والزخم",
-                roleFinancial: "المدير المالي",
-                roleOperations: "مساعد العمليات",
-                rolePeople: "الأفراد والتأثير",
-                roleGovRelations: "العلاقات الحكومية",
-                roleSales: "منسق المبيعات",
-                roleExpExec: "تنفيذي التجربة",
-                roleExpManager: "مدير التجربة",
-                roleMarketingCoord: "منسق التسويق والمجتمع",
                 contact: "اتصل بنا"
             }
         };
@@ -1682,58 +1517,6 @@
                 header.classList.remove('scrolled');
             }
         });
-
-        // MODAL LOGIC
-        function openInstaModal(url) {
-            const modal = document.getElementById('insta-modal');
-            const iframe = document.getElementById('insta-frame');
-            iframe.src = url;
-            modal.style.display = "flex";
-        }
-
-        function closeInstaModal(event) {
-            if (event.target.id === 'insta-modal' || event.target.classList.contains('close-modal')) {
-                const modal = document.getElementById('insta-modal');
-                const iframe = document.getElementById('insta-frame');
-                modal.style.display = "none";
-                iframe.src = "";
-            }
-        }
-
-        // PRESS TOGGLE LOGIC
-        function togglePress() {
-            const hiddenItems = document.querySelectorAll('.press-hidden');
-            const btn = document.querySelector('.press-expand-btn');
-            
-            // Comprobar si estamos expandiendo o colapsando
-            const isExpanding = btn.getAttribute('data-expanded') !== 'true';
-
-            hiddenItems.forEach(item => {
-                if (isExpanding) {
-                    item.style.display = 'flex'; // O 'block' dependiendo del diseño
-                    item.classList.add('press-visible');
-                } else {
-                    item.style.display = 'none';
-                    item.classList.remove('press-visible');
-                }
-            });
-
-            if (isExpanding) {
-                btn.setAttribute('data-expanded', 'true');
-                btn.setAttribute('data-i18n', 'viewLessNews');
-                // Actualizar texto inmediatamente según idioma actual
-                const currentLang = document.querySelector('.current-lang').textContent.toLowerCase();
-                btn.textContent = translations[currentLang]?.viewLessNews || "VIEW LESS";
-            } else {
-                btn.setAttribute('data-expanded', 'false');
-                btn.setAttribute('data-i18n', 'viewAllNews');
-                const currentLang = document.querySelector('.current-lang').textContent.toLowerCase();
-                btn.textContent = translations[currentLang]?.viewAllNews || "VIEW ALL NEWS";
-                
-                // Scroll suave de vuelta al inicio de la sección de prensa
-                document.querySelector('.press-section').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
     </script>
 </body>
 </html>
