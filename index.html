@@ -944,6 +944,189 @@
             object-fit: contain; /* Asegura que no se estire ni aplaste */
             margin-bottom: 0.5rem;
         }
+
+        /* --- BOOK STYLE TEAM SECTION (MINIMALIST & INTEGRATED) --- */
+        .collective-section {
+            /* Fondo Hueso para integrar con el resto ("Completo") */
+            background-color: var(--bg-color); 
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            border-top: 1px solid var(--border-color); /* Separador sutil */
+        }
+
+        .book-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Ligeramente más ancho */
+            aspect-ratio: 4/5; /* Proporción más clásica de editorial */
+            perspective: 1000px;
+        }
+
+        .book-page {
+            /* CAMBIO APLICADO: Color Hueso (var(--bg-color)) en lugar de Blanco (#FFFFFF) */
+            background-color: var(--bg-color); 
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* Sombra ajustada ligeramente para definir bordes sobre el mismo color de fondo */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 2px;
+            border: 1px solid rgba(0,0,0,0.02); /* Borde casi invisible para definición extra */
+            
+            /* Textura de papel imperceptible */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+        }
+
+        /* Efecto de páginas apiladas debajo (Ajustado para armonizar con el hueso) */
+        .book-container::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: -4px; bottom: -4px;
+            background-color: #EBE9E4; /* Un tono ligeramente más oscuro que el hueso para simular sombra/papel */
+            z-index: -1;
+            border-radius: 2px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .book-container::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            background-color: #DFDBD6; /* Un poco más oscuro */
+            z-index: -2;
+            border-radius: 2px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Contenido de la Página */
+        .book-header {
+            position: absolute;
+            top: 3rem;
+            left: 0; 
+            width: 100%;
+            text-align: center;
+        }
+
+        .page-indicator {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            color: #ccc;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .content-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1; /* Ocupa el espacio central */
+            width: 100%;
+        }
+
+        .member-name-large {
+            font-family: var(--font-serif);
+            font-size: 4rem; /* Más grande y fino */
+            font-weight: 300;
+            color: #1a1a1a;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .member-role-small {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #888;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .member-link-icon {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            border-bottom: 1px solid #ddd; /* Solo línea abajo para más limpieza */
+            padding-bottom: 3px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .member-link-icon:hover {
+            border-color: #1a1a1a;
+            opacity: 0.7;
+        }
+
+        /* Controles de Navegación (INTEGRADOS) */
+        .book-footer {
+            position: absolute;
+            bottom: 3rem;
+            left: 4rem;
+            right: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05); /* Línea muy sutil */
+            padding-top: 1.5rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #999;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover { color: #1a1a1a; }
+        .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+        .progress-bar-mini {
+            width: 60px;
+            height: 1px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .progress-fill-mini {
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            background-color: #1a1a1a;
+            width: 0%; 
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .book-container { max-width: 100%; aspect-ratio: auto; height: 500px; }
+            .member-name-large { font-size: 2.8rem; }
+            .book-page { padding: 3rem 2rem; }
+            .book-footer { left: 2rem; right: 2rem; bottom: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -998,7 +1181,7 @@
         <p class="manifesto-sub" style="text-align: center;" data-i18n="manifestoSub">
             We are The Culture Layer for Living Legacy Experiences.
         </p>
-        <a href="#" class="text-link" data-i18n="readPaper">Read 2026 Paper</a>
+        <!-- Link "Read 2026 Paper" eliminado -->
     </section>
 
     <!-- NEW: CLIENT MARQUEE -->
@@ -1276,121 +1459,31 @@
         </div>
     </section>
 
-    <!-- NEW TEAM DIRECTORY (CLEAN LIST - NO PHOTOS) -->
-    <section class="directory-section">
-        <div class="text-center" style="margin-bottom: 6rem;">
-            <span class="subtitle" data-i18n="teamSubtitle">THE COLLECTIVE</span>
-            <h2 class="heading-l" data-i18n="teamTitle">Minds Behind the Legacy</h2>
-        </div>
-        <div class="directory-container">
-            <div class="directory-list">
+    <!-- NEW TEAM DIRECTORY (BOOK STYLE - INTEGRATED) -->
+    <section class="collective-section">
+        <h2 class="heading-l" style="margin-bottom: 3rem; text-align: center;" data-i18n="teamTitle">The Collective</h2>
+        
+        <div class="book-container">
+            <div class="book-page" id="bookPage">
                 
-                <!-- 1. Alvaro Daza -->
-                <a href="https://www.linkedin.com/in/alvdaza/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Alvaro Daza</span>
-                        <span class="directory-role">FOUNDER & CEO</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 2. Marco Giovanni -->
-                <a href="https://www.linkedin.com/in/marcodegiovanni007/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Marco Giovanni</span>
-                        <span class="directory-role">CO-FOUNDER & COO</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 3. Camilo Romero -->
-                <a href="https://www.linkedin.com/in/camilo-romero-molano-6037a590/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Camilo Romero</span>
-                        <span class="directory-role">DIRECTOR LATAM</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 4. Carolina Mejía -->
-                <a href="https://www.linkedin.com/in/carolina-mejia-12989120b/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Carolina Mejía</span>
-                        <span class="directory-role">PARTNERSHIPS AND MOMENTUM</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 5. Fares AlDika -->
-                <a href="https://www.linkedin.com/in/fares-al-dika/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Fares AlDika</span>
-                        <span class="directory-role">FINANCIAL MANAGER</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 6. Juan Romero -->
-                <a href="https://www.linkedin.com/in/juan-felipe-romero-lopez/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Juan Romero</span>
-                        <span class="directory-role">OPERATIONS ASSISTANT</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 7. Melissa Aponte -->
-                <a href="https://www.linkedin.com/in/melissaponte/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Melissa Aponte</span>
-                        <span class="directory-role">PEOPLE AND IMPACT</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 8. Valentin Sierra -->
-                <a href="https://www.linkedin.com/in/valentin-sierra-colombia/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Valentin Sierra</span>
-                        <span class="directory-role">GOVERNMENT RELATIONS</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 9. María Rosero (No link originally) -->
-                <div class="directory-item" style="cursor: default;">
-                    <div class="directory-info">
-                        <span class="directory-name">María Rosero</span>
-                        <span class="directory-role">SALES COORDINATOR</span>
-                    </div>
-                    <!-- Empty link for visual balance if needed, or remove -->
+                <!-- Header interno: Página -->
+                <div class="book-header">
+                    <span class="page-indicator" id="pageNumber">01 / 12</span>
                 </div>
 
-                <!-- 10. Andres Cañas -->
-                <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Andres Cañas</span>
-                        <span class="directory-role">EXPERIENCE EXECUTIVE</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
-
-                <!-- 11. Ayah Okasha (No link originally) -->
-                <div class="directory-item" style="cursor: default;">
-                    <div class="directory-info">
-                        <span class="directory-name">Ayah Okasha</span>
-                        <span class="directory-role">EXPERIENCE MANAGER</span>
-                    </div>
+                <!-- Contenido Central -->
+                <div class="content-center">
+                    <h3 class="member-name-large" id="memberName">Alvaro Daza</h3>
+                    <span class="member-role-small" id="memberRole">Founder & CEO</span>
+                    <a href="https://www.linkedin.com/in/alvdaza/" target="_blank" class="member-link-icon" id="memberLink">Open Profile ↗</a>
                 </div>
 
-                <!-- 12. Rahath Aaliya -->
-                <a href="https://www.linkedin.com/in/rahathaaliya/" target="_blank" class="directory-item">
-                    <div class="directory-info">
-                        <span class="directory-name">Rahath Aaliya</span>
-                        <span class="directory-role">MARKETING & COMMUNITY CO-ORDINATOR</span>
-                    </div>
-                    <span class="directory-link">LINKEDIN ↗</span>
-                </a>
+                <!-- Footer interno: Navegación -->
+                <div class="book-footer">
+                    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">← Prev</button>
+                    <div class="progress-bar-mini"><div class="progress-fill-mini" id="progressFill" style="width: 8%;"></div></div>
+                    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+                </div>
 
             </div>
         </div>
@@ -1404,8 +1497,8 @@
             <p style="font-size: 0.75rem; margin: 0.5rem 0 0 0; color: #888;">© 2026 Circolo Life. LEAAS.</p>
         </div>
         <div class="footer-col" style="flex-direction: row; gap: 3rem;">
-            <a href="#" class="footer-link">Instagram</a>
-            <a href="#" class="footer-link">LinkedIn</a>
+            <a href="https://www.instagram.com/circolo.life/" target="_blank" class="footer-link">Instagram</a>
+            <a href="https://www.linkedin.com/company/circololife/posts/?feedView=all" target="_blank" class="footer-link">LinkedIn</a>
             <a href="#" class="footer-link" data-i18n="contact">Contact</a>
         </div>
     </footer>
@@ -1430,6 +1523,63 @@
     </div>
 
     <script>
+        // Data for Team Members
+        const teamMembers = [
+            { name: "Alvaro Daza", role: "Founder & CEO", link: "https://www.linkedin.com/in/alvdaza/" },
+            { name: "Marco Giovanni", role: "Co-Founder & COO", link: "https://www.linkedin.com/in/marcodegiovanni007/" },
+            { name: "Camilo Romero", role: "Director Latam", link: "https://www.linkedin.com/in/camilo-romero-molano-6037a590/" },
+            { name: "Carolina Mejía", role: "Partnerships & Momentum", link: "https://www.linkedin.com/in/carolina-mejia-12989120b/" },
+            { name: "Fares AlDika", role: "Financial Manager", link: "https://www.linkedin.com/in/fares-al-dika/" },
+            { name: "Juan Romero", role: "Operations Assistant", link: "https://www.linkedin.com/in/juan-felipe-romero-lopez/" },
+            { name: "Melissa Aponte", role: "People & Impact", link: "https://www.linkedin.com/in/melissaponte/" },
+            { name: "Valentin Sierra", role: "Government Relations", link: "https://www.linkedin.com/in/valentin-sierra-colombia/" },
+            { name: "María Rosero", role: "Sales Coordinator", link: "" },
+            { name: "Andres Cañas", role: "Experience Executive", link: "https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/" },
+            { name: "Ayah Okasha", role: "Experience Manager", link: "" },
+            { name: "Rahath Aaliya", role: "Marketing & Community", link: "https://www.linkedin.com/in/rahathaaliya/" }
+        ];
+
+        let currentIndex = 0;
+
+        function changePage(direction) {
+            // Update index
+            currentIndex += direction;
+            
+            // Loop functionality (optional) or Bound functionality
+            if (currentIndex < 0) currentIndex = teamMembers.length - 1;
+            if (currentIndex >= teamMembers.length) currentIndex = 0;
+
+            const member = teamMembers[currentIndex];
+            const page = document.getElementById('bookPage');
+            
+            // Simple animation
+            page.style.opacity = 0;
+            page.style.transform = "rotateY(-5deg) translateX(-10px)";
+
+            setTimeout(() => {
+                // Update Content
+                document.getElementById('pageNumber').textContent = `0${currentIndex + 1} / ${teamMembers.length}`;
+                document.getElementById('memberName').textContent = member.name;
+                document.getElementById('memberRole').textContent = member.role;
+                
+                const linkElem = document.getElementById('memberLink');
+                if (member.link) {
+                    linkElem.href = member.link;
+                    linkElem.style.display = 'inline-block';
+                } else {
+                    linkElem.style.display = 'none';
+                }
+
+                // Update Progress Bar
+                const progressPercentage = ((currentIndex + 1) / teamMembers.length) * 100;
+                document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+
+                // Restore Fade In
+                page.style.opacity = 1;
+                page.style.transform = "rotateY(0) translateX(0)";
+            }, 300);
+        }
+
         // Translations based on the new concept
         const translations = {
             en: {
