@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circolo Life | The Circle of Life</title>
-    <!-- Fonts -->
+    
+    <!-- FAVICON (Navegador) -->
+    <link rel="icon" type="image/png" href="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Gradient%20Icon@2x.png">
+
+    <!-- WEB CLIP (Icono para iPhone/iPad/Android Home Screen) -->
+    <link rel="apple-touch-icon" href="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Gradient%20Icon@2x.png">
+
+    <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* --- BONE & QUIET LUXURY AESTHETIC --- */
         :root {
+            /* Tono Hueso más claro / Lighter Off-White */
             --bg-color: #F9F8F6; 
+            /* Tono secundario ajustado para mantener el contraste sutil */
             --bg-secondary: #F2F0EB; 
+            /* Texto Charcoal suave, no negro puro */
             --text-color: #222222; 
             --accent-color: #666666;
+            /* Líneas finas editoriales */
             --border-color: rgba(0, 0, 0, 0.06); 
             
             --font-serif: 'Cormorant Garamond', serif; 
@@ -24,6 +35,8 @@
         }
 
         * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
@@ -52,6 +65,8 @@
         body[dir="rtl"] .directory-item { flex-direction: row-reverse; }
         body[dir="rtl"] .directory-name { text-align: right; }
         body[dir="rtl"] .directory-role { text-align: right; }
+        body[dir="rtl"] .book-footer { flex-direction: row-reverse; }
+        body[dir="rtl"] .nav-dropdown { left: auto; right: 3rem; text-align: right; }
 
         /* --- TYPOGRAPHY --- */
         h1, h2, h3, h4, h5 {
@@ -142,11 +157,13 @@
             transition: all 0.5s ease;
         }
 
+        /* EFECTO CRISTAL MÁS TRANSPARENTE EN SCROLL */
         .main-header.scrolled {
-            background-color: rgba(249, 248, 246, 0.95);
+            background-color: rgba(249, 248, 246, 0.3); /* Mucho más transparente */
             padding: 1rem 3rem;
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(25px); /* Blur aumentado para compensar */
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -158,9 +175,10 @@
             width: auto;
             display: block;
             transition: all 0.3s ease;
+            z-index: 3001; 
         }
 
-        .header-left { display: flex; align-items: center; }
+        .header-left { display: flex; align-items: center; position: relative; }
         .header-right { display: flex; align-items: center; gap: 2rem; }
 
         .menu-trigger {
@@ -172,6 +190,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            z-index: 3002;
+            position: relative;
         }
 
         .cta-btn {
@@ -189,6 +209,62 @@
 
         .cta-btn:hover { opacity: 0.6; }
 
+        /* --- MENU DROPDOWN MÁS TRANSPARENTE --- */
+        .nav-dropdown {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            margin-top: 15px; 
+            
+            /* Fondo Cristalino Muy Transparente */
+            background-color: rgba(249, 248, 246, 0.4); 
+            backdrop-filter: blur(30px); 
+            -webkit-backdrop-filter: blur(30px);
+            
+            min-width: 220px;
+            padding: 1.2rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Borde casi imperceptible */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            z-index: 3000;
+        }
+
+        .nav-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(0,0,0,0.02);
+            /* Sombra de texto sutil para legibilidad sobre fondo transparente */
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+        
+        .nav-link:last-child { border-bottom: none; }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #d4af37; 
+            padding-left: 1.8rem;
+        }
+
         /* --- LANGUAGE SELECTOR --- */
         .lang-selector {
             position: relative;
@@ -202,12 +278,7 @@
             z-index: 1001;
         }
 
-        .current-lang {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            justify-content: flex-end;
-        }
+        .current-lang { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
 
         .lang-dropdown {
             position: absolute;
@@ -225,11 +296,7 @@
             text-align: right;
         }
 
-        .lang-selector:hover .lang-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+        .lang-selector:hover .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 
         .lang-dropdown span {
             display: block;
@@ -274,46 +341,45 @@
             transition: transform 6s ease;
         }
         
-        /* Capa de oscurecimiento (Overlay Oscuro) para texto BLANCO */
+        /* Overlay Oscuro para Texto Blanco */
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Gradiente oscuro sutil para resaltar texto blanco */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
             z-index: 2;
         }
         
-        .hero:hover .hero-bg-img { 
-            transform: scale(1.03);
-        }
+        .hero:hover .hero-bg-img { transform: scale(1.03); }
         
         .hero-content { 
             position: relative; 
             z-index: 3; 
-            max-width: 1000px; 
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         /* Estilos específicos para el contenido del Hero en BLANCO */
         .hero-content h1 {
             color: #FFFFFF;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3); /* Sombra elegante para legibilidad */
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            font-weight: 300;
         }
         
         .hero-content p {
             color: #FFFFFF;
             text-transform: uppercase;
             letter-spacing: 0.25em;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-top: 1.5rem;
-            font-weight: 400;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-weight: 500;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
         }
 
         /* --- SECTIONS --- */
         .section-spacer { padding: 8rem 3rem; }
         .text-center { text-align: center; }
 
-        /* --- MANIFIESTO --- */
+        /* --- MANIFIESTO (FIXED LAYOUT) --- */
         .manifesto {
             background-color: var(--bg-color);
             display: flex;
@@ -323,14 +389,16 @@
             padding-top: 8rem;
             padding-bottom: 8rem;
             border-bottom: 1px solid var(--border-color);
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .manifesto-text {
             font-family: var(--font-serif);
             font-size: 2.2rem;
             text-align: center;
-            line-height: 1.4;
-            max-width: 850px;
+            line-height: 1.5;
+            max-width: 680px;
             color: #111;
             margin-bottom: 2.5rem;
             font-weight: 300;
@@ -375,7 +443,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- SHAPE SYSTEM GRID (THE 4 PILLARS) --- */
+        /* --- SHAPE SYSTEM GRID --- */
         .shapes-section {
             padding: 8rem 4rem;
             background-color: var(--bg-color);
@@ -685,290 +753,109 @@
             overflow: hidden;
         }
 
-        /* --- TEAM DIRECTORY --- */
-        .directory-section {
+        /* --- JOURNAL SECTION --- */
+        .journal-section {
             padding: 8rem 4rem;
-            background-color: var(--bg-color);
+            background-color: var(--bg-color); /* Hueso */
             border-top: 1px solid var(--border-color);
         }
 
-        .directory-container {
-            max-width: 1100px;
+        .journal-grid {
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .directory-list {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .directory-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border-color);
-            text-decoration: none;
-            color: var(--text-color);
-            transition: background-color 0.3s ease, padding 0.3s ease;
-        }
-
-        .directory-item:hover {
-            background-color: var(--bg-secondary);
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .directory-info {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 4rem;
-            align-items: baseline;
-            flex-grow: 1;
         }
 
-        .directory-name {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 400;
-            min-width: 300px;
-            letter-spacing: -0.01em;
-        }
-
-        .directory-role {
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #888;
-        }
-
-        .directory-link {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-color);
-            opacity: 0.4;
-            transition: opacity 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .directory-item:hover .directory-link { opacity: 1; }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-top: 1px solid var(--border-color);
-            margin-top: 0;
-            background-color: var(--bg-color);
-        }
-
-        .footer-col { display: flex; flex-direction: column; gap: 1rem; }
-        .footer-link {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #111;
-            text-decoration: none;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-        .footer-link:hover { opacity: 1; }
-
-        @media (max-width: 1024px) {
-            .heading-xl { font-size: 3rem; }
-            .shape-grid { grid-template-columns: repeat(2, 1fr); border-right: 1px solid var(--border-color); }
-            .shape-card:nth-child(2n) { border-right: none; }
-            .press-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-            .stats-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .stat-item:not(:last-child)::after { display: none; }
-            /* Ajuste de logo en tablets */
-            .logo { height: 60px; }
-            footer { flex-direction: column; align-items: center; gap: 3rem; text-align: center; }
-        }
-        
-        @media (max-width: 768px) {
-             .section-spacer { padding: 5rem 1.5rem; }
-             .shape-grid { grid-template-columns: 1fr; border-right: none; }
-             .shape-card { border-right: none; }
-             .press-grid { grid-template-columns: 1fr; }
-             .heading-xl { font-size: 2.5rem; }
-             .manifesto-text { font-size: 1.6rem; }
-             
-             /* Directory Mobile */
-             .directory-info { flex-direction: column; gap: 0.5rem; }
-             .directory-name { font-size: 1.4rem; min-width: auto; }
-             .directory-item { align-items: flex-start; padding: 1.5rem 0; }
-             .directory-link { margin-top: 1rem; align-self: flex-start; }
-             .hero-image-container { left: 1rem; right: 1rem; top: 1rem; bottom: 1rem; }
-             
-             /* Ajuste de logo en móvil para que no choque con menú */
-             .logo { height: 45px; }
-             
-             /* Ajuste Glass Card en móvil */
-             .glass-card h1 { font-size: 2rem; }
-             .glass-card p { font-size: 0.7rem; letter-spacing: 2px; }
-             .glass-card { padding: 30px 20px; width: 90%; }
-        }
-
-        /* --- WHATSAPP WIDGET UNIFICADO (LUJO SILENCIOSO) --- */
-        .whatsapp-widget {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            z-index: 2000;
-            display: flex;
-            flex-direction: column-reverse; /* Las opciones aparecen arriba */
-            align-items: center;
-        }
-
-        /* Botón Principal (Trigger) - ACTUALIZADO: SOLO LOGO */
-        .whatsapp-trigger {
-            width: 65px; /* Ligeramente más grande para que el logo luzca */
-            height: 65px;
-            background-color: transparent; /* Fondo transparente */
-            border: none; /* Sin borde */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: none; /* Sombra en la caja eliminada */
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            /* Sin backdrop-filter */
-        }
-
-        .whatsapp-widget:hover .whatsapp-trigger {
-            background-color: transparent; /* Mantiene transparencia al hover */
-            transform: scale(1.1) rotate(15deg); /* Efecto sutil de escala y rotación */
-        }
-        
-        /* La inversión de color se elimina para mantener el gradiente original */
-        .whatsapp-widget:hover .whatsapp-trigger .whatsapp-icon-img {
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15)); /* Sombra más profunda al hover */
-        }
-
-        /* Contenedor de Opciones (Oculto por defecto) */
-        .whatsapp-options {
+        .journal-card {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(15px);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .whatsapp-widget:hover .whatsapp-options {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Botones Individuales */
-        .whatsapp-opt {
-            width: 50px;
-            height: 50px;
-            background-color: var(--bg-color);
-            border: 1px solid rgba(0,0,0,0.05); /* Borde muy sutil */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            position: relative;
+            color: var(--text-color);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .whatsapp-opt:hover {
-            background-color: var(--text-color);
-            transform: scale(1.05);
+        .journal-card:hover { opacity: 0.8; transform: translateY(-5px); }
+
+        .journal-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background-color: #E0DED9;
+            border-radius: 2px;
         }
 
-        .whatsapp-opt:hover .whatsapp-icon-small {
-            fill: var(--bg-color);
+        .journal-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%);
+            transition: all 0.8s ease;
         }
 
-        /* Etiquetas de Texto (Tooltip) */
-        .whatsapp-opt::after {
-            content: attr(data-label);
-            position: absolute;
-            right: 60px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            padding: 5px 10px;
+        .journal-card:hover .journal-image-wrapper img {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+
+        .journal-date {
             font-family: var(--font-sans);
             font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-radius: 2px;
-            opacity: 0;
-            visibility: hidden;
-            white-space: nowrap;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            letter-spacing: 0.15em;
+            color: #999;
+            margin-bottom: 0.8rem;
         }
 
-        .whatsapp-opt:hover::after {
-            opacity: 1;
-            visibility: visible;
+        .journal-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 0 0 1rem 0;
+            color: #1a1a1a;
         }
 
-        /* Estilos actualizados para la imagen del icono - Ocupa todo el trigger */
-        .whatsapp-icon-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            transition: filter 0.4s ease; 
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); /* Sombra suave aplicada a la imagen */
+        .journal-excerpt {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.6;
         }
-        
-        .whatsapp-icon-small { width: 20px; height: 20px; fill: var(--text-color); transition: fill 0.3s; }
 
         /* --- FOOTER LOGO FIX --- */
-        /* Clase específica para evitar que el logo se deforme en el footer */
         .footer-logo {
-            height: 35px; /* Altura controlada */
-            width: auto;  /* Ancho automático para mantener proporción */
+            height: 35px;
+            width: auto;
             display: block;
-            object-fit: contain; /* Asegura que no se estire ni aplaste */
+            object-fit: contain;
             margin-bottom: 0.5rem;
         }
 
         /* --- BOOK STYLE TEAM SECTION (MINIMALIST & INTEGRATED) --- */
         .collective-section {
-            /* Fondo Hueso para integrar con el resto ("Completo") */
-            background-color: var(--bg-color); 
+            background-color: var(--bg-color); /* Fondo Hueso */
             padding: 6rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 90vh;
-            border-top: 1px solid var(--border-color); /* Separador sutil */
+            border-top: 1px solid var(--border-color);
         }
 
         .book-container {
             position: relative;
             width: 100%;
-            max-width: 800px; /* Ligeramente más ancho */
-            aspect-ratio: 4/5; /* Proporción más clásica de editorial */
+            max-width: 800px;
+            aspect-ratio: 4/5;
             perspective: 1000px;
         }
 
         .book-page {
-            /* CAMBIO APLICADO: Color Hueso (var(--bg-color)) en lugar de Blanco (#FFFFFF) */
-            background-color: var(--bg-color); 
+            background-color: var(--bg-color); /* Coincide con fondo */
             width: 100%;
             height: 100%;
             position: relative;
@@ -979,23 +866,20 @@
             align-items: center;
             text-align: center;
             
-            /* Sombra ajustada ligeramente para definir bordes sobre el mismo color de fondo */
             box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 5px 15px rgba(0,0,0,0.05);
             border-radius: 2px;
-            border: 1px solid rgba(0,0,0,0.02); /* Borde casi invisible para definición extra */
+            border: 1px solid rgba(0,0,0,0.02);
             
-            /* Textura de papel imperceptible */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
             
             transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
         }
 
-        /* Efecto de páginas apiladas debajo (Ajustado para armonizar con el hueso) */
         .book-container::before {
             content: '';
             position: absolute;
             top: 4px; left: 4px; right: -4px; bottom: -4px;
-            background-color: #EBE9E4; /* Un tono ligeramente más oscuro que el hueso para simular sombra/papel */
+            background-color: #EBE9E4;
             z-index: -1;
             border-radius: 2px;
             box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -1005,13 +889,12 @@
             content: '';
             position: absolute;
             top: 8px; left: 8px; right: -8px; bottom: -8px;
-            background-color: #DFDBD6; /* Un poco más oscuro */
+            background-color: #DFDBD6;
             z-index: -2;
             border-radius: 2px;
             box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Contenido de la Página */
         .book-header {
             position: absolute;
             top: 3rem;
@@ -1033,13 +916,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Ocupa el espacio central */
+            flex-grow: 1; 
             width: 100%;
         }
 
         .member-name-large {
             font-family: var(--font-serif);
-            font-size: 4rem; /* Más grande y fino */
+            font-size: 4rem; 
             font-weight: 300;
             color: #1a1a1a;
             line-height: 1;
@@ -1062,19 +945,15 @@
             color: #1a1a1a;
             font-family: var(--font-sans);
             font-size: 0.65rem;
-            border-bottom: 1px solid #ddd; /* Solo línea abajo para más limpieza */
+            border-bottom: 1px solid #ddd;
             padding-bottom: 3px;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
-        .member-link-icon:hover {
-            border-color: #1a1a1a;
-            opacity: 0.7;
-        }
+        .member-link-icon:hover { border-color: #1a1a1a; opacity: 0.7; }
 
-        /* Controles de Navegación (INTEGRADOS) */
         .book-footer {
             position: absolute;
             bottom: 3rem;
@@ -1083,50 +962,159 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(0,0,0,0.05); /* Línea muy sutil */
+            border-top: 1px solid rgba(0,0,0,0.05); 
             padding-top: 1.5rem;
         }
 
-        .nav-btn {
-            background: transparent;
-            border: none;
-            color: #999;
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            cursor: pointer;
-            transition: color 0.3s;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .nav-btn { background: transparent; border: none; color: #999; font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; cursor: pointer; transition: color 0.3s; padding: 10px; display: flex; align-items: center; gap: 8px; }
         .nav-btn:hover { color: #1a1a1a; }
         .nav-btn:disabled { opacity: 0.3; cursor: default; }
 
-        .progress-bar-mini {
-            width: 60px;
-            height: 1px;
-            background-color: #eee;
-            position: relative;
-        }
-
-        .progress-fill-mini {
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            background-color: #1a1a1a;
-            width: 0%; 
-            transition: width 0.3s ease;
-        }
+        .progress-bar-mini { width: 60px; height: 1px; background-color: #eee; position: relative; }
+        .progress-fill-mini { position: absolute; left: 0; top: 0; bottom: 0; background-color: #1a1a1a; width: 0%; transition: width 0.3s ease; }
 
         @media (max-width: 768px) {
+            .heading-xl { font-size: 2.5rem; }
+            .hero-image-container { left: 1rem; right: 1rem; top: 1rem; bottom: 1rem; }
+            .shape-grid { grid-template-columns: 1fr; border-right: none; }
+            .shape-card { border-right: none; }
+            .press-grid { grid-template-columns: 1fr; }
+            .logo { height: 45px; }
+            .manifesto-text { font-size: 1.6rem; padding: 0 1rem; }
             .book-container { max-width: 100%; aspect-ratio: auto; height: 500px; }
             .member-name-large { font-size: 2.8rem; }
             .book-page { padding: 3rem 2rem; }
             .book-footer { left: 2rem; right: 2rem; bottom: 2rem; }
+            .nav-dropdown { right: 0; left: auto; min-width: 180px; }
+            .journal-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
+
+        /* --- WHATSAPP WIDGET --- */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column-reverse; /* Las opciones aparecen arriba */
+            align-items: center;
+        }
+
+        .whatsapp-trigger {
+            width: 65px; 
+            height: 65px;
+            background-color: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: none;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .whatsapp-widget:hover .whatsapp-trigger, .whatsapp-widget.expanded .whatsapp-trigger {
+            background-color: transparent;
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        .whatsapp-widget:hover .whatsapp-trigger .whatsapp-icon-img, .whatsapp-widget.expanded .whatsapp-trigger .whatsapp-icon-img {
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+        }
+
+        .whatsapp-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .whatsapp-widget:hover .whatsapp-options, .whatsapp-widget.expanded .whatsapp-options {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .whatsapp-opt {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-color);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-opt:hover { background-color: var(--text-color); transform: scale(1.05); }
+        .whatsapp-opt:hover .whatsapp-icon-small { fill: var(--bg-color); }
+
+        .whatsapp-opt::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            opacity: 0;
+            visibility: hidden;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-opt:hover::after { opacity: 1; visibility: visible; }
+
+        .whatsapp-icon-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            transition: filter 0.4s ease; 
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+        }
+        
+        .whatsapp-icon-small { width: 20px; height: 20px; fill: var(--text-color); transition: fill 0.3s; }
+
+        /* FOOTER */
+        footer {
+            padding: 5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0;
+            background-color: var(--bg-color);
+        }
+
+        .footer-col { display: flex; flex-direction: column; gap: 1rem; }
+        .footer-link {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #111;
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+        .footer-link:hover { opacity: 1; }
+
     </style>
 </head>
 <body>
@@ -1134,11 +1122,21 @@
     <!-- HEADER -->
     <header class="main-header" id="header">
         <div class="header-left">
-            <div class="menu-trigger">
-                <span data-i18n="menu">Menu</span>
+            <div class="menu-trigger" onclick="toggleMenu()">
+                <span data-i18n="menu" id="menu-text">Menu</span>
+                
+                <!-- MENU DROPDOWN LIST -->
+                <div id="nav-dropdown" class="nav-dropdown">
+                    <a href="#concept" class="nav-link">Us</a>
+                    <a href="#shapes" class="nav-link">Projects</a>
+                    <a href="#press" class="nav-link">Signal & Press</a>
+                    <a href="#team" class="nav-link">Team</a>
+                    <a href="#journal" class="nav-link">The Journal</a>
+                    <a href="#" onclick="openContactWidget(event)" class="nav-link">Contact</a>
+                </div>
             </div>
         </div>
-        <!-- Logo Image Updated (Size adjusted in CSS) -->
+        <!-- Logo -->
         <img class="logo" src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="CIRCOLO">
         <div class="header-right">
             <div class="lang-selector">
@@ -1149,31 +1147,27 @@
                     <span onclick="setLanguage('ar')">AR</span>
                 </div>
             </div>
-            <button class="cta-btn" data-i18n="inquire">Inquire</button>
         </div>
     </header>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-image-container">
-            <!-- Updated Hero Image to reflect 'Legacy' concept -->
             <img class="hero-bg-img" 
                  src="https://uploads.onecompiler.io/4474z9257/44ad3qvge/DSCF0074.webp" 
                  onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'"
                  alt="Circolo Legacy">
-            <!-- Overlay oscuro restaurado para texto blanco -->
             <div class="hero-overlay"></div>
         </div>
         
         <div class="hero-content">
-            <!-- Texto restaurado a BLANCO (#FFFFFF) -->
             <h1 class="heading-xl" data-i18n="heroTitle">Creating Legacy Experiences</h1>
             <p data-i18n="heroSub">Built for humans of now and the future</p>
         </div>
     </section>
 
-    <!-- MANIFESTO (Updated from PDF) -->
-    <section class="manifesto">
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="concept">
         <span class="subtitle" data-i18n="manifestoLabel">THE CONCEPT</span>
         <p class="manifesto-text" data-i18n="manifestoText">
             What is life? Life is a sequence of moments, shaped by people, anchored in places, and remembered through objects.
@@ -1181,13 +1175,11 @@
         <p class="manifesto-sub" style="text-align: center;" data-i18n="manifestoSub">
             We are The Culture Layer for Living Legacy Experiences.
         </p>
-        <!-- Link "Read 2026 Paper" eliminado -->
     </section>
 
-    <!-- NEW: CLIENT MARQUEE -->
+    <!-- CLIENT MARQUEE -->
     <div class="marquee-container">
         <div class="marquee-track">
-            <!-- SET 1 -->
             <span class="marquee-item">Blacklane</span>
             <span class="marquee-item">Daos Hub</span>
             <span class="marquee-item">New Tribe Capital</span>
@@ -1199,7 +1191,6 @@
             <span class="marquee-item">Elite Models</span>
             <span class="marquee-item">OPUS</span>
             <span class="marquee-item">Superteam</span>
-            <span class="marquee-item">AKUA</span>
             <span class="marquee-item">David Ghiyam</span>
             <span class="marquee-item">Beyond Project</span>
             <span class="marquee-item">Calma</span>
@@ -1219,8 +1210,7 @@
             <span class="marquee-item">Alkalime</span>
             <span class="marquee-item">BNB Chain</span>
             <span class="marquee-item">Chi Longevity Services</span>
-
-            <!-- SET 2 (Duplicate for Loop) -->
+            <!-- Duplicate for Loop -->
             <span class="marquee-item">Blacklane</span>
             <span class="marquee-item">Daos Hub</span>
             <span class="marquee-item">New Tribe Capital</span>
@@ -1232,7 +1222,6 @@
             <span class="marquee-item">Elite Models</span>
             <span class="marquee-item">OPUS</span>
             <span class="marquee-item">Superteam</span>
-            <span class="marquee-item">AKUA</span>
             <span class="marquee-item">David Ghiyam</span>
             <span class="marquee-item">Beyond Project</span>
             <span class="marquee-item">Calma</span>
@@ -1255,8 +1244,8 @@
         </div>
     </div>
 
-    <!-- NEW: THE SHAPE SYSTEM (PILLARS) -->
-    <section class="shapes-section">
+    <!-- THE SHAPE SYSTEM -->
+    <section class="shapes-section" id="shapes">
         <div class="text-center" style="margin-bottom: 6rem;">
             <span class="subtitle" data-i18n="shapesSubtitle">THE SHAPE SYSTEM</span>
             <h2 class="heading-l" data-i18n="shapesTitle">Design the Circle</h2>
@@ -1264,79 +1253,47 @@
         </div>
 
         <div class="shape-grid">
-            <!-- 1. People / Triangle -->
             <div class="shape-card">
-                <div class="shape-icon-container">
-                    <div class="shape-triangle"></div>
-                </div>
+                <div class="shape-icon-container"><div class="shape-triangle"></div></div>
                 <span class="shape-subtitle" data-i18n="pillar1Sub">CONNECTING</span>
                 <h3 class="shape-title" data-i18n="pillar1Title">People</h3>
-                <p class="shape-desc" data-i18n="pillar1Desc">
-                    <strong>Circolo House.</strong> Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.
-                </p>
+                <p class="shape-desc" data-i18n="pillar1Desc"><strong>Circolo House.</strong> Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.</p>
             </div>
-
-            <!-- 2. Experiences / Spark -->
             <div class="shape-card">
-                <div class="shape-icon-container">
-                    <div class="shape-spark"></div>
-                </div>
+                <div class="shape-icon-container"><div class="shape-spark"></div></div>
                 <span class="shape-subtitle" data-i18n="pillar2Sub">CELEBRATING</span>
                 <h3 class="shape-title" data-i18n="pillar2Title">Moments</h3>
-                <p class="shape-desc" data-i18n="pillar2Desc">
-                    <strong>The Spark.</strong> Experiences are not "events." They are engineered legacy moments. Brand launches, rituals, and cultural milestones.
-                </p>
+                <p class="shape-desc" data-i18n="pillar2Desc"><strong>The Spark.</strong> Experiences are not "events." They are engineered legacy moments. Brand launches, rituals, and cultural milestones.</p>
             </div>
-
-            <!-- 3. Places / Square -->
             <div class="shape-card">
-                <div class="shape-icon-container">
-                    <div class="shape-square"></div>
-                </div>
+                <div class="shape-icon-container"><div class="shape-square"></div></div>
                 <span class="shape-subtitle" data-i18n="pillar3Sub">CREATING</span>
                 <h3 class="shape-title" data-i18n="pillar3Title">Places</h3>
-                <p class="shape-desc" data-i18n="pillar3Desc">
-                    <strong>Anchoring Identity.</strong> Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.
-                </p>
+                <p class="shape-desc" data-i18n="pillar3Desc"><strong>Anchoring Identity.</strong> Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.</p>
             </div>
-
-            <!-- 4. Editions / Plus -->
             <div class="shape-card">
-                <div class="shape-icon-container">
-                    <div class="shape-plus"></div>
-                </div>
+                <div class="shape-icon-container"><div class="shape-plus"></div></div>
                 <span class="shape-subtitle" data-i18n="pillar4Sub">CRAFTING</span>
                 <h3 class="shape-title" data-i18n="pillar4Title">Editions</h3>
-                <p class="shape-desc" data-i18n="pillar4Desc">
-                    <strong>Memory Technology.</strong> Objects, books, and collectibles. Not "merch," but culture objects that keep the story alive.
-                </p>
+                <p class="shape-desc" data-i18n="pillar4Desc"><strong>Memory Technology.</strong> Objects, books, and collectibles. Not "merch," but culture objects that keep the story alive.</p>
             </div>
         </div>
     </section>
 
-    <!-- NEW: CONTEXT / WHY NOW -->
-    <section class="context-section">
+    <!-- CONTEXT / WHY NOW -->
+    <section class="context-section" id="context">
         <span class="subtitle" data-i18n="contextSubtitle">THE HUMAN PROBLEM</span>
         <h2 class="heading-l" style="max-width: 800px; text-align: center; margin-bottom: 2rem;" data-i18n="contextTitle">Connection is no longer optional. It is infrastructure.</h2>
         
         <div class="stats-grid">
-            <div class="stat-item">
-                <h3>1 in 6</h3>
-                <p data-i18n="stat1">People experiencing loneliness worldwide</p>
-            </div>
-            <div class="stat-item">
-                <h3>$1.07T</h3>
-                <p data-i18n="stat2">Events Industry Growth Forecast</p>
-            </div>
-            <div class="stat-item">
-                <h3>1,019</h3>
-                <p data-i18n="stat3">Branded Residences by 2030</p>
-            </div>
+            <div class="stat-item"><h3>1 in 6</h3><p data-i18n="stat1">People experiencing loneliness worldwide</p></div>
+            <div class="stat-item"><h3>$1.07T</h3><p data-i18n="stat2">Events Industry Growth Forecast</p></div>
+            <div class="stat-item"><h3>1,019</h3><p data-i18n="stat3">Branded Residences by 2030</p></div>
         </div>
     </section>
 
-    <!-- PROJECTS CAROUSEL (Updated Labels) -->
-    <section class="project-carousel-section">
+    <!-- PROJECTS CAROUSEL -->
+    <section class="project-carousel-section" id="projects">
         <div class="text-center" style="padding-top: 6rem;">
             <span class="subtitle" data-i18n="globalSubtitle">ICONIC 2026</span>
             <h2 class="heading-l" data-i18n="globalTitle">Across Borders</h2>
@@ -1344,383 +1301,174 @@
 
         <div class="project-carousel-container">
             <div class="project-carousel-track">
-                <!-- Items updated to reflect Shapes/Pillars concept lightly in text -->
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'" alt="UAE Project">
-                    </div>
-                    <span class="slide-country">ABU DHABI</span>
-                    <h3 class="slide-title">Agentic Sunset</h3>
-                    <span class="slide-client">■ PLACE / LOUVRE</span>
+                    <div class="slide-image-wrapper"><img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" alt="UAE Project"></div>
+                    <span class="slide-country">ABU DHABI</span><h3 class="slide-title">Agentic Sunset</h3><span class="slide-client">■ PLACE / LOUVRE</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=2552&auto=format&fit=crop" alt="Singapore Project">
-                    </div>
-                    <span class="slide-country">SINGAPORE</span>
-                    <h3 class="slide-title">Human Accelerator</h3>
-                    <span class="slide-client">▲ PEOPLE / PRIMAL</span>
+                    <div class="slide-image-wrapper"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=2552&auto=format&fit=crop" alt="Singapore Project"></div>
+                    <span class="slide-country">SINGAPORE</span><h3 class="slide-title">Human Accelerator</h3><span class="slide-client">▲ PEOPLE / PRIMAL</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2538&auto=format&fit=crop" alt="Indonesia Project">
-                    </div>
-                    <span class="slide-country">BALI</span>
-                    <h3 class="slide-title">Calma Wellness</h3>
-                    <span class="slide-client">■ PLACE / RETREAT</span>
+                    <div class="slide-image-wrapper"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2538&auto=format&fit=crop" alt="Indonesia Project"></div>
+                    <span class="slide-country">BALI</span><h3 class="slide-title">Calma Wellness</h3><span class="slide-client">■ PLACE / RETREAT</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2673&auto=format&fit=crop" alt="France Project">
-                    </div>
-                    <span class="slide-country">FRANCE</span>
-                    <h3 class="slide-title">Sensory Activation</h3>
-                    <span class="slide-client">✦ MOMENT / DAVID GHIYAM</span>
+                    <div class="slide-image-wrapper"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2673&auto=format&fit=crop" alt="France Project"></div>
+                    <span class="slide-country">FRANCE</span><h3 class="slide-title">Sensory Activation</h3><span class="slide-client">✦ MOMENT / DAVID GHIYAM</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://cuscoperu.b-cdn.net/wp-content/uploads/2024/06/Llama-en-Machu-Picchu-pc.jpg.webp" alt="Peru Project">
-                    </div>
-                    <span class="slide-country">PERU</span>
-                    <h3 class="slide-title">Lima Community</h3>
-                    <span class="slide-client">▲ PEOPLE / BINANCE</span>
+                    <div class="slide-image-wrapper"><img src="https://cuscoperu.b-cdn.net/wp-content/uploads/2024/06/Llama-en-Machu-Picchu-pc.jpg.webp" alt="Peru Project"></div>
+                    <span class="slide-country">PERU</span><h3 class="slide-title">Lima Community</h3><span class="slide-client">▲ PEOPLE / BINANCE</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop" alt="Colombia Project">
-                    </div>
-                    <span class="slide-country">COLOMBIA</span>
-                    <h3 class="slide-title">Crypto Coffee</h3>
-                    <span class="slide-client">+ EDITION / MEDELLIN</span>
+                    <div class="slide-image-wrapper"><img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop" alt="Colombia Project"></div>
+                    <span class="slide-country">COLOMBIA</span><h3 class="slide-title">Crypto Coffee</h3><span class="slide-client">+ EDITION / MEDELLIN</span>
                 </div>
-                <!-- Duplicate for loop -->
                  <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" onerror="this.src='https://images.unsplash.com/photo-1512453979798-5ea9ba6a80f4?q=80&w=2070&auto=format&fit=crop'" alt="UAE Project">
-                    </div>
-                    <span class="slide-country">ABU DHABI</span>
-                    <h3 class="slide-title">Agentic Sunset</h3>
-                    <span class="slide-client">■ PLACE / LOUVRE</span>
+                    <div class="slide-image-wrapper"><img src="https://cdn.prod.website-files.com/64e21a34e41da63fe4f44c5a/6685fc6b4013b3e57e64dc68_pexels-blue-earth-photo-921252577-19965890%20(1).jpg" alt="UAE Project"></div>
+                    <span class="slide-country">ABU DHABI</span><h3 class="slide-title">Agentic Sunset</h3><span class="slide-client">■ PLACE / LOUVRE</span>
                 </div>
                 <div class="project-card-slide">
-                    <div class="slide-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=2552&auto=format&fit=crop" alt="Singapore Project">
-                    </div>
-                    <span class="slide-country">SINGAPORE</span>
-                    <h3 class="slide-title">Human Accelerator</h3>
-                    <span class="slide-client">▲ PEOPLE / PRIMAL</span>
+                    <div class="slide-image-wrapper"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=2552&auto=format&fit=crop" alt="Singapore Project"></div>
+                    <span class="slide-country">SINGAPORE</span><h3 class="slide-title">Human Accelerator</h3><span class="slide-client">▲ PEOPLE / PRIMAL</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRESS SECTION (UPDATED REAL LINKS & IMAGES) -->
-    <section class="press-section">
+    <!-- PRESS SECTION -->
+    <section class="press-section" id="press">
         <div class="text-center" style="margin-bottom: 6rem;">
             <span class="subtitle" data-i18n="pressSubtitle">SIGNAL & PRESS</span>
         </div>
         <div class="press-grid">
-            <!-- 1. CoinMarketCap -->
              <a href="https://coinmarketcap.com/community/articles/68a8266f8c34f9397ee4ecd9/" target="_blank" class="press-card">
-                <div class="press-image-wrapper">
-                    <img src="https://academy-public.coinmarketcap.com/srd-optimized-uploads/13c929bec0c7456dba7a8da772b7865c.png" onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=2070&auto=format&fit=crop'" alt="CoinMarketCap Feature">
-                </div>
-                <span class="press-meta">COINMARKETCAP</span>
-                <h4 class="press-title">Circolo Community: A New Era of Connection</h4>
+                <div class="press-image-wrapper"><img src="https://academy-public.coinmarketcap.com/srd-optimized-uploads/13c929bec0c7456dba7a8da772b7865c.png" alt="CoinMarketCap Feature"></div>
+                <span class="press-meta">COINMARKETCAP</span><h4 class="press-title">Circolo Community: A New Era of Connection</h4>
                 <p class="press-description">CoinMarketCap highlights how Circolo is redefining community engagement through immersive experiences.</p>
             </a>
-            <!-- 2. Khaleej Times -->
             <a href="https://www.khaleejtimes.com/business/the-exclusive-token2049-private-dinner-everyones-talking-about" target="_blank" class="press-card">
-                <div class="press-image-wrapper">
-                    <img src="https://imgengine.khaleejtimes.com/khaleejtimes-english/2025-04-24/uepxcsdn/TOKEN49IXI.jpeg?width=1200&height=800&format=auto" alt="Khaleej Times Feature">
-                </div>
-                <span class="press-meta">KHALEEJ TIMES</span>
-                <h4 class="press-title">The Exclusive TOKEN2049 Private Dinner</h4>
+                <div class="press-image-wrapper"><img src="https://imgengine.khaleejtimes.com/khaleejtimes-english/2025-04-24/uepxcsdn/TOKEN49IXI.jpeg?width=1200&height=800&format=auto" alt="Khaleej Times Feature"></div>
+                <span class="press-meta">KHALEEJ TIMES</span><h4 class="press-title">The Exclusive TOKEN2049 Private Dinner</h4>
                 <p class="press-description">Circolo and IXI Labs hosted an unforgettable evening at CÉ LA VI Dubai, bringing together Web3 leaders.</p>
             </a>
-            <!-- 3. Blockopedia (Arepa) -->
             <a href="https://theblockopedia.com/circolo-makes-history-at-token2049-the-first-real-arepa-in-the-world-gets-tokenized/" target="_blank" class="press-card">
-                <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/05/Untitled-design-1_11zon.png" alt="Tokenized Arepa">
-                </div>
-                <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">History at TOKEN2049: The First Tokenized Arepa</h4>
+                <div class="press-image-wrapper"><img src="https://theblockopedia.com/wp-content/uploads/2025/05/Untitled-design-1_11zon.png" alt="Tokenized Arepa"></div>
+                <span class="press-meta">THE BLOCKOPEDIA</span><h4 class="press-title">History at TOKEN2049: The First Tokenized Arepa</h4>
                 <p class="press-description">A groundbreaking moment where culinary tradition meets blockchain innovation.</p>
             </a>
-            <!-- 4. Blockopedia (Impact) -->
             <a href="https://theblockopedia.com/circolo-curates-the-most-impactful-web3-experiences-during-token2049-dubai/" target="_blank" class="press-card">
-                <div class="press-image-wrapper">
-                    <img src="https://theblockopedia.com/wp-content/uploads/2025/04/Untitled-design-16.png" alt="Impactful Experiences">
-                </div>
-                <span class="press-meta">THE BLOCKOPEDIA</span>
-                <h4 class="press-title">Curating Impactful Web3 Experiences</h4>
+                <div class="press-image-wrapper"><img src="https://theblockopedia.com/wp-content/uploads/2025/04/Untitled-design-16.jpg" alt="Impactful Experiences"></div>
+                <span class="press-meta">THE BLOCKOPEDIA</span><h4 class="press-title">Curating Impactful Web3 Experiences</h4>
                 <p class="press-description">Defining the standard for immersive Web3 events, blending luxury and innovation in Dubai.</p>
             </a>
         </div>
     </section>
 
-    <!-- NEW TEAM DIRECTORY (BOOK STYLE - INTEGRATED) -->
-    <section class="collective-section">
+    <!-- JOURNAL SECTION -->
+    <section class="journal-section" id="journal">
+        <div class="text-center" style="margin-bottom: 6rem;">
+            <span class="subtitle">THE JOURNAL</span>
+        </div>
+        <div class="journal-grid">
+            <!-- Article 1 -->
+            <a href="journal1.html" class="journal-card">
+                <div class="journal-image-wrapper">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/687741201ff3c1e399e02d3e_BFA_37459_5207572%2Bweb%2B(2).jpg" alt="Experience Design">
+                </div>
+                <span class="journal-date">July 15, 2025</span>
+                <h4 class="journal-title">Why Event Planning Companies Need to Embrace Experience Design to Stay Relevant?</h4>
+                <p class="journal-excerpt">Logistics are a commodity. Connection is the new currency. Discover why the industry is shifting from planning to designing.</p>
+            </a>
+            
+            <!-- Article 2 -->
+            <a href="journal2.html" class="journal-card">
+                <div class="journal-image-wrapper">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/67ea5bbfd5f031d6be1fd068_RedactedAirways-Final-296.jpg" alt="Event Planning Is Dead">
+                </div>
+                <span class="journal-date">May 21, 2025</span>
+                <h4 class="journal-title">Event Planning Is Dead</h4>
+                <p class="journal-excerpt">A provocative look at the end of an era. We don't need more planners; we need architects of human connection.</p>
+            </a>
+            
+            <!-- Article 3 -->
+            <a href="journal3.html" class="journal-card">
+                <div class="journal-image-wrapper">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/689d79f3e857a0545b96ca92_97d21f3dd62b8c67df29578ababcf3e5.jpg" alt="Experience Marketing">
+                </div>
+                <span class="journal-date">April 30, 2025</span>
+                <h4 class="journal-title">The Key to Turning an Event into an Experience</h4>
+                <p class="journal-excerpt">Challenges, strategies, and success stories in the new age of Experience Marketing.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- TEAM DIRECTORY -->
+    <section class="collective-section" id="team">
         <h2 class="heading-l" style="margin-bottom: 3rem; text-align: center;" data-i18n="teamTitle">The Collective</h2>
         
         <div class="book-container">
             <div class="book-page" id="bookPage">
-                
-                <!-- Header interno: Página -->
-                <div class="book-header">
-                    <span class="page-indicator" id="pageNumber">01 / 12</span>
-                </div>
-
-                <!-- Contenido Central -->
+                <div class="book-header"><span class="page-indicator" id="pageNumber">01 / 12</span></div>
                 <div class="content-center">
                     <h3 class="member-name-large" id="memberName">Alvaro Daza</h3>
                     <span class="member-role-small" id="memberRole">Founder & CEO</span>
                     <a href="https://www.linkedin.com/in/alvdaza/" target="_blank" class="member-link-icon" id="memberLink">Open Profile ↗</a>
                 </div>
-
-                <!-- Footer interno: Navegación -->
                 <div class="book-footer">
                     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">← Prev</button>
                     <div class="progress-bar-mini"><div class="progress-fill-mini" id="progressFill" style="width: 8%;"></div></div>
                     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer id="contact">
         <div class="footer-col">
-            <!-- Logo Image Updated with specific class to fix aspect ratio -->
             <img class="footer-logo" src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="CIRCOLO">
             <p style="font-size: 0.75rem; margin: 0.5rem 0 0 0; color: #888;">© 2026 Circolo Life. LEAAS.</p>
         </div>
         <div class="footer-col" style="flex-direction: row; gap: 3rem;">
             <a href="https://www.instagram.com/circolo.life/" target="_blank" class="footer-link">Instagram</a>
             <a href="https://www.linkedin.com/company/circololife/posts/?feedView=all" target="_blank" class="footer-link">LinkedIn</a>
-            <a href="#" class="footer-link" data-i18n="contact">Contact</a>
+            <a href="#" onclick="openContactWidget(event)" class="footer-link" data-i18n="contact">Contact</a>
         </div>
     </footer>
 
-    <!-- WHATSAPP WIDGET (UNIFICADO) -->
-    <div class="whatsapp-widget">
-        <!-- Trigger Button (Icono Principal Actualizado) -->
-        <div class="whatsapp-trigger">
-            <!-- Icono Imagen Reemplazado por Gradient Icon -->
+    <!-- WHATSAPP WIDGET -->
+    <div id="whatsapp-widget" class="whatsapp-widget">
+        <div class="whatsapp-trigger" onclick="toggleContactWidget()">
             <img class="whatsapp-icon-img" src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Gradient%20Icon@2x.png" alt="Contact">
         </div>
-        
-        <!-- Opciones Desplegables -->
         <div class="whatsapp-options">
             <a href="https://wa.link/aq8x7a" target="_blank" class="whatsapp-opt" data-label="Contact I">
-                <svg class="whatsapp-icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            </a>
-            <a href="https://wa.link/0udz77" target="_blank" class="whatsapp-opt" data-label="Contact II">
                 <svg class="whatsapp-icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             </a>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script>
-        // Data for Team Members
-        const teamMembers = [
-            { name: "Alvaro Daza", role: "Founder & CEO", link: "https://www.linkedin.com/in/alvdaza/" },
-            { name: "Marco Giovanni", role: "Co-Founder & COO", link: "https://www.linkedin.com/in/marcodegiovanni007/" },
-            { name: "Camilo Romero", role: "Director Latam", link: "https://www.linkedin.com/in/camilo-romero-molano-6037a590/" },
-            { name: "Carolina Mejía", role: "Partnerships & Momentum", link: "https://www.linkedin.com/in/carolina-mejia-12989120b/" },
-            { name: "Fares AlDika", role: "Financial Manager", link: "https://www.linkedin.com/in/fares-al-dika/" },
-            { name: "Juan Romero", role: "Operations Assistant", link: "https://www.linkedin.com/in/juan-felipe-romero-lopez/" },
-            { name: "Melissa Aponte", role: "People & Impact", link: "https://www.linkedin.com/in/melissaponte/" },
-            { name: "Valentin Sierra", role: "Government Relations", link: "https://www.linkedin.com/in/valentin-sierra-colombia/" },
-            { name: "María Rosero", role: "Sales Coordinator", link: "" },
-            { name: "Andres Cañas", role: "Experience Executive", link: "https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/" },
-            { name: "Ayah Okasha", role: "Experience Manager", link: "" },
-            { name: "Rahath Aaliya", role: "Marketing & Community", link: "https://www.linkedin.com/in/rahathaaliya/" }
-        ];
+        function toggleMenu() { const d = document.getElementById('nav-dropdown'); const m = document.getElementById('menu-text'); if(d.classList.contains('open')){d.classList.remove('open');m.textContent="Menu";}else{d.classList.add('open');m.textContent="Close";} }
+        function openContactWidget(e) { if(e)e.preventDefault(); const d = document.getElementById('nav-dropdown'); if(d&&d.classList.contains('open'))toggleMenu(); toggleContactWidget(true); }
+        function toggleContactWidget(f=false) { const w = document.getElementById('whatsapp-widget'); if(f)w.classList.add('expanded'); else w.classList.toggle('expanded'); }
+        document.querySelectorAll('.nav-link').forEach(l=>{l.addEventListener('click',()=>{document.getElementById('nav-dropdown').classList.remove('open');document.getElementById('menu-text').textContent="Menu";});});
+        document.addEventListener('click',function(e){const d=document.getElementById('nav-dropdown');const t=document.querySelector('.menu-trigger');if(!t.contains(e.target)&&d.classList.contains('open')){d.classList.remove('open');document.getElementById('menu-text').textContent="Menu";}const w=document.getElementById('whatsapp-widget');const cl=document.querySelectorAll('a[onclick*="openContactWidget"]');let icl=false;cl.forEach(l=>{if(l.contains(e.target))icl=true;});if(!w.contains(e.target)&&!icl&&w.classList.contains('expanded'))w.classList.remove('expanded');});
 
+        const teamMembers = [{name:"Alvaro Daza",role:"Founder & CEO",link:"https://www.linkedin.com/in/alvdaza/"},{name:"Marco Giovanni",role:"Co-Founder & COO",link:"https://www.linkedin.com/in/marcodegiovanni007/"},{name:"Camilo Romero",role:"Director Latam",link:"https://www.linkedin.com/in/camilo-romero-molano-6037a590/"},{name:"Carolina Mejía",role:"Partnerships & Momentum",link:"https://www.linkedin.com/in/carolina-mejia-12989120b/"},{name:"Fares AlDika",role:"Financial Manager",link:"https://www.linkedin.com/in/fares-al-dika/"},{name:"Juan Romero",role:"Operations Assistant",link:"https://www.linkedin.com/in/juan-felipe-romero-lopez/"},{name:"Melissa Aponte",role:"People & Impact",link:"https://www.linkedin.com/in/melissaponte/"},{name:"Valentin Sierra",role:"Government Relations",link:"https://www.linkedin.com/in/valentin-sierra-colombia/"},{name:"María Rosero",role:"Sales Coordinator",link:""},{name:"Andres Cañas",role:"Experience Executive",link:"https://www.linkedin.com/in/andr%C3%A9s-felipe-ca%C3%B1as-laverde-894453218/"},{name:"Ayah Okasha",role:"Experience Manager",link:""},{name:"Rahath Aaliya",role:"Marketing & Community",link:"https://www.linkedin.com/in/rahathaaliya/"}];
         let currentIndex = 0;
+        function changePage(dir) { currentIndex+=dir; if(currentIndex<0)currentIndex=teamMembers.length-1; if(currentIndex>=teamMembers.length)currentIndex=0; const m=teamMembers[currentIndex]; const p=document.getElementById('bookPage'); p.style.opacity=0; p.style.transform="rotateY(-5deg) translateX(-10px)"; setTimeout(()=>{document.getElementById('pageNumber').textContent=`0${currentIndex+1} / ${teamMembers.length}`; document.getElementById('memberName').textContent=m.name; document.getElementById('memberRole').textContent=m.role; const l=document.getElementById('memberLink'); if(m.link){l.href=m.link;l.style.display='inline-block';l.textContent="Open Profile ↗";}else{l.style.display='inline-block';l.textContent="—";l.href="#";} document.getElementById('progressFill').style.width=`${((currentIndex+1)/teamMembers.length)*100}%`; p.style.opacity=1; p.style.transform="rotateY(0) translateX(0)";},300); }
 
-        function changePage(direction) {
-            // Update index
-            currentIndex += direction;
-            
-            // Loop functionality (optional) or Bound functionality
-            if (currentIndex < 0) currentIndex = teamMembers.length - 1;
-            if (currentIndex >= teamMembers.length) currentIndex = 0;
-
-            const member = teamMembers[currentIndex];
-            const page = document.getElementById('bookPage');
-            
-            // Simple animation
-            page.style.opacity = 0;
-            page.style.transform = "rotateY(-5deg) translateX(-10px)";
-
-            setTimeout(() => {
-                // Update Content
-                document.getElementById('pageNumber').textContent = `0${currentIndex + 1} / ${teamMembers.length}`;
-                document.getElementById('memberName').textContent = member.name;
-                document.getElementById('memberRole').textContent = member.role;
-                
-                const linkElem = document.getElementById('memberLink');
-                if (member.link) {
-                    linkElem.href = member.link;
-                    linkElem.style.display = 'inline-block';
-                } else {
-                    linkElem.style.display = 'none';
-                }
-
-                // Update Progress Bar
-                const progressPercentage = ((currentIndex + 1) / teamMembers.length) * 100;
-                document.getElementById('progressFill').style.width = `${progressPercentage}%`;
-
-                // Restore Fade In
-                page.style.opacity = 1;
-                page.style.transform = "rotateY(0) translateX(0)";
-            }, 300);
-        }
-
-        // Translations based on the new concept
         const translations = {
-            en: {
-                menu: "Menu",
-                inquire: "Inquire",
-                heroTitle: "Creating Legacy Experiences",
-                heroSub: "BUILT FOR HUMANS OF NOW AND THE FUTURE",
-                manifestoLabel: "THE CONCEPT",
-                manifestoText: "Life is a sequence of moments, shaped by people, anchored in places, and remembered through objects.",
-                manifestoSub: "We are The Culture Layer for Living Legacy Experiences.",
-                readPaper: "Read 2026 Paper",
-                shapesSubtitle: "THE SHAPE SYSTEM",
-                shapesTitle: "Design the Circle",
-                shapesText: "Most industries treat life as fragments. We build the system that makes the pieces compound.",
-                pillar1Sub: "CONNECTING",
-                pillar1Title: "People",
-                pillar1Desc: "Circolo House. Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.",
-                pillar2Sub: "CELEBRATING",
-                pillar2Title: "Moments",
-                pillar2Desc: "The Spark. Experiences are not 'events.' They are engineered legacy moments. Brand launches, rituals, and cultural milestones.",
-                pillar3Sub: "CREATING",
-                pillar3Title: "Places",
-                pillar3Desc: "Anchoring Identity. Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.",
-                pillar4Sub: "CRAFTING",
-                pillar4Title: "Editions",
-                pillar4Desc: "Memory Technology. Objects, books, and collectibles. Not 'merch,' but culture objects that keep the story alive.",
-                contextSubtitle: "THE HUMAN PROBLEM",
-                contextTitle: "Connection is no longer optional. It is infrastructure.",
-                stat1: "People experiencing loneliness worldwide",
-                stat2: "Events Industry Growth Forecast",
-                stat3: "Branded Residences by 2030",
-                globalSubtitle: "ICONIC 2026",
-                globalTitle: "Across Borders",
-                pressSubtitle: "SIGNAL & PRESS",
-                teamSubtitle: "THE COLLECTIVE",
-                teamTitle: "Minds Behind the Legacy",
-                contact: "Contact"
-            },
-            es: {
-                menu: "Menú",
-                inquire: "Consultar",
-                heroTitle: "Creando Experiencias de Legado",
-                heroSub: "CONSTRUIDO PARA HUMANOS DE HOY Y DEL FUTURO",
-                manifestoLabel: "EL CONCEPTO",
-                manifestoText: "La vida es una secuencia de momentos, moldeados por personas, anclados en lugares y recordados a través de objetos.",
-                manifestoSub: "Somos la Capa Cultural para Experiencias de Legado Vivo.",
-                readPaper: "Leer Paper 2026",
-                shapesSubtitle: "SISTEMA DE FORMAS",
-                shapesTitle: "Diseña el Círculo",
-                shapesText: "La mayoría de industrias tratan la vida como fragmentos. Nosotros construimos el sistema que hace que las piezas se compongan.",
-                pillar1Sub: "CONECTAR",
-                pillar1Title: "Personas",
-                pillar1Desc: "Circolo House. Confianza, pertenencia y señal. No llenamos salas; curamos el patrocinio que impulsa la colaboración.",
-                pillar2Sub: "CELEBRAR",
-                pillar2Title: "Momentos",
-                pillar2Desc: "La Chispa. Las experiencias no son 'eventos'. Son momentos de legado diseñados. Lanzamientos y rituales culturales.",
-                pillar3Sub: "CREAR",
-                pillar3Title: "Lugares",
-                pillar3Desc: "Anclar la Identidad. Donde el gusto se vuelve permanente. Conceptos de hospitalidad, renovaciones y pabellones.",
-                pillar4Sub: "ELABORAR",
-                pillar4Title: "Ediciones",
-                pillar4Desc: "Tecnología de Memoria. Objetos, libros y coleccionables. No 'merch', sino objetos culturales que mantienen viva la historia.",
-                contextSubtitle: "EL PROBLEMA HUMANO",
-                contextTitle: "La conexión ya no es opcional. Es infraestructura.",
-                stat1: "Personas experimentando soledad globalmente",
-                stat2: "Pronóstico de Crecimiento Industria Eventos",
-                stat3: "Residencias de Marca para 2030",
-                globalSubtitle: "ICONIC 2026",
-                globalTitle: "A Través de Fronteras",
-                pressSubtitle: "SEÑAL Y PRENSA",
-                teamSubtitle: "EL COLECTIVO",
-                teamTitle: "Mentes tras el Legado",
-                contact: "Contacto"
-            },
-            ar: {
-                menu: "القائمة",
-                inquire: "استفسار",
-                heroTitle: "خلق تجارب الإرث",
-                heroSub: "بنيت من أجل البشر الآن وفي المستقبل",
-                manifestoLabel: "المفهوم",
-                manifestoText: "الحياة سلسلة من اللحظات، تشكلها الناس، وترتكز في الأماكن، وتُذكر من خلال الأشياء.",
-                manifestoSub: "نحن الطبقة الثقافية لتجارب الإرث الحية.",
-                readPaper: "اقرأ ورقة 2026",
-                shapesSubtitle: "نظام الأشكال",
-                shapesTitle: "صمم الدائرة",
-                shapesText: "تتعامل معظم الصناعات مع الحياة كشظايا. نحن نبني النظام الذي يجعل القطع تتكامل.",
-                pillar1Sub: "الاتصال",
-                pillar1Title: "الناس",
-                pillar1Desc: "بيت سيركولو. الثقة والانتماء والإشارة. نحن لا نملأ غرفة فقط؛ نحن ننسق الرعاية التي تقود تدفق الصفقات والتعاون.",
-                pillar2Sub: "الاحتفال",
-                pillar2Title: "اللحظات",
-                pillar2Desc: "الشرارة. التجارب ليست 'أحداثًا'. إنها لحظات إرث مصممة هندسيًا. إطلاق العلامات التجارية والطقوس والمعالم الثقافية.",
-                pillar3Sub: "الإبداع",
-                pillar3Title: "الأماكن",
-                pillar3Desc: "ترسيخ الهوية. حيث يصبح الذوق دائمًا. مفاهيم الضيافة والتجديدات والأجنحة التي تحمل الثقافة.",
-                pillar4Sub: "الصناعة",
-                pillar4Title: "الإصدارات",
-                pillar4Desc: "تكنولوجيا الذاكرة. الأشياء والكتب والمقتنيات. ليست 'بضائع'، بل أشياء ثقافية تبقي القصة حية.",
-                contextSubtitle: "المشكلة البشرية",
-                contextTitle: "الاتصال لم يعد اختياريًا. إنه بنية تحتية.",
-                stat1: "شخص يعاني من الوحدة في جميع أنحاء العالم",
-                stat2: "توقعات نمو صناعة الفعاليات",
-                stat3: "المساكن ذات العلامات التجارية بحلول عام 2030",
-                globalSubtitle: "أيقونة 2026",
-                globalTitle: "عبر الحدود",
-                pressSubtitle: "الإشارة والصحافة",
-                teamSubtitle: "المجموعة",
-                teamTitle: "عقول خلف الإرث",
-                contact: "اتصل بنا"
-            }
+            en:{menu:"Menu",inquire:"Inquire",heroTitle:"Creating Legacy Experiences",heroSub:"BUILT FOR HUMANS OF NOW AND THE FUTURE",manifestoLabel:"THE CONCEPT",manifestoText:"Life is a sequence of moments, shaped by people, anchored in places, and remembered through objects.",manifestoSub:"We are The Culture Layer for Living Legacy Experiences.",shapesSubtitle:"THE SHAPE SYSTEM",shapesTitle:"Design the Circle",shapesText:"Most industries treat life as fragments. We build the system that makes the pieces compound.",pillar1Sub:"CONNECTING",pillar1Title:"People",pillar1Desc:"Circolo House. Trust, belonging, and signal. We don't just fill a room; we curate the patronage that drives deal flow and collaboration.",pillar2Sub:"CELEBRATING",pillar2Title:"Moments",pillar2Desc:"The Spark. Experiences are not 'events.' They are engineered legacy moments. Brand launches, rituals, and cultural milestones.",pillar3Sub:"CREATING",pillar3Title:"Places",pillar3Desc:"Anchoring Identity. Where taste becomes permanent. Hospitality concepts, renovations, and pavilions that hold the culture.",pillar4Sub:"CRAFTING",pillar4Title:"Editions",pillar4Desc:"Memory Technology. Objects, books, and collectibles. Not 'merch,' but culture objects that keep the story alive.",contextSubtitle:"THE HUMAN PROBLEM",contextTitle:"Connection is no longer optional. It is infrastructure.",stat1:"People experiencing loneliness worldwide",stat2:"Events Industry Growth Forecast",stat3:"Branded Residences by 2030",globalSubtitle:"ICONIC 2026",globalTitle:"Across Borders",pressSubtitle:"SIGNAL & PRESS",teamSubtitle:"THE COLLECTIVE",teamTitle:"Minds Behind the Legacy",contact:"Contact"},
+            es:{menu:"Menú",inquire:"Consultar",heroTitle:"Creando Experiencias de Legado",heroSub:"CONSTRUIDO PARA HUMANOS DE HOY Y DEL FUTURO",manifestoLabel:"EL CONCEPTO",manifestoText:"La vida es una secuencia de momentos, moldeados por personas, anclados en lugares y recordados a través de objetos.",manifestoSub:"Somos la Capa Cultural para Experiencias de Legado Vivo.",shapesSubtitle:"SISTEMA DE FORMAS",shapesTitle:"Diseña el Círculo",shapesText:"La mayoría de industrias tratan la vida como fragmentos. Nosotros construimos el sistema que hace que las piezas se compongan.",pillar1Sub:"CONECTAR",pillar1Title:"Personas",pillar1Desc:"Circolo House. Confianza, pertenencia y señal. No llenamos salas; curamos el patrocinio que impulsa la colaboración.",pillar2Sub:"CELEBRAR",pillar2Title:"Momentos",pillar2Desc:"La Chispa. Las experiencias no son 'eventos'. Son momentos de legado diseñados. Lanzamientos y rituales culturales.",pillar3Sub:"CREAR",pillar3Title:"Lugares",pillar3Desc:"Anclar la Identidad. Donde el gusto se vuelve permanente. Conceptos de hospitalidad, renovaciones y pabellones.",pillar4Sub:"ELABORAR",pillar4Title:"Ediciones",pillar4Desc:"Tecnología de Memoria. Objetos, libros y coleccionables. No 'merch', sino objetos culturales que mantienen viva la historia.",contextSubtitle:"EL PROBLEMA HUMANO",contextTitle:"La conexión ya no es opcional. Es infraestructura.",stat1:"Personas experimentando soledad globalmente",stat2:"Pronóstico de Crecimiento Industria Eventos",stat3:"Residencias de Marca para 2030",globalSubtitle:"ICONIC 2026",globalTitle:"A Través de Fronteras",pressSubtitle:"SEÑAL Y PRENSA",teamSubtitle:"EL COLECTIVO",teamTitle:"Mentes tras el Legado",contact:"Contacto"},
+            ar:{menu:"القائمة",inquire:"استفسار",heroTitle:"خلق تجارب الإرث",heroSub:"بنيت من أجل البشر الآن وفي المستقبل",manifestoLabel:"المفهوم",manifestoText:"الحياة سلسلة من اللحظات، تشكلها الناس، وترتكز في الأماكن، وتُذكر من خلال الأشياء.",manifestoSub:"نحن الطبقة الثقافية لتجارب الإرث الحية.",shapesSubtitle:"نظام الأشكال",shapesTitle:"صمم الدائرة",shapesText:"تتعامل معظم الصناعات مع الحياة كشظايا. نحن نبني النظام الذي يجعل القطع تتكامل.",pillar1Sub:"الاتصال",pillar1Title:"الناس",pillar1Desc:"بيت سيركولو. الثقة والانتماء والإشارة. نحن لا نملأ غرفة فقط؛ نحن ننسق الرعاية التي تقود تدفق الصفقات والتعاون.",pillar2Sub:"الاحتفال",pillar2Title:"اللحظات",pillar2Desc:"الشرارة. التجارب ليست 'أحداثًا'. إنها لحظات إرث مصممة هندسيًا. إطلاق العلامات التجارية والطقوس والمعالم الثقافية.",pillar3Sub:"الإبداع",pillar3Title:"الأماكن",pillar3Desc:"ترسيخ الهوية. حيث يصبح الذوق دائمًا. مفاهيم الضيافة والتجديدات والأجنحة التي تحمل الثقافة.",pillar4Sub:"الصناعة",pillar4Title:"الإصدارات",pillar4Desc:"تكنولوجيا الذاكرة. الأشياء والكتب والمقتنيات. ليست 'بضائع'، بل أشياء ثقافية تبقي القصة حية.",contextSubtitle:"المشكلة البشرية",contextTitle:"الاتصال لم يعد اختياريًا. إنه بنية تحتية.",stat1:"شخص يعاني من الوحدة في جميع أنحاء العالم",stat2:"توقعات نمو صناعة الفعاليات",stat3:"المساكن ذات العلامات التجارية بحلول عام 2030",globalSubtitle:"أيقونة 2026",globalTitle:"عبر الحدود",pressSubtitle:"الإشارة والصحافة",teamSubtitle:"المجموعة",teamTitle:"عقول خلف الإرث",contact:"اتصل بنا"}
         };
-
-        function setLanguage(lang) {
-            document.querySelector('.current-lang').textContent = lang.toUpperCase();
-            if (lang === 'ar') {
-                document.body.setAttribute('dir', 'rtl');
-            } else {
-                document.body.setAttribute('dir', 'ltr');
-            }
-            
-            const t = translations[lang] || translations['en'];
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (t[key]) {
-                    element.style.opacity = 0;
-                    setTimeout(() => {
-                        element.textContent = t[key];
-                        element.style.opacity = 1;
-                    }, 200);
-                }
-            });
-        }
-
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        function setLanguage(lang) { document.querySelector('.current-lang').textContent=lang.toUpperCase(); if(lang==='ar'){document.body.setAttribute('dir','rtl');}else{document.body.setAttribute('dir','ltr');} const t=translations[lang]||translations['en']; document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n'); if(t[k]){e.style.opacity=0;setTimeout(()=>{e.textContent=t[k];e.style.opacity=1;},200);}}); }
+        window.addEventListener('scroll', function() { const h=document.getElementById('header'); if(window.scrollY>50)h.classList.add('scrolled'); else h.classList.remove('scrolled'); });
     </script>
 </body>
 </html>
