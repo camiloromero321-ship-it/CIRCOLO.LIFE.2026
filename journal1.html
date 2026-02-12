@@ -1,0 +1,315 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Experience Design is Vital | Circolo Journal</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Gradient%20Icon@2x.png">
+    <link rel="apple-touch-icon" href="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Gradient%20Icon@2x.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS (Mismos que Index + Estilos de Artículo) -->
+    <style>
+        /* --- BONE & QUIET LUXURY AESTHETIC --- */
+        :root {
+            --bg-color: #F9F8F6; 
+            --bg-secondary: #F2F0EB; 
+            --text-color: #222222; 
+            --accent-color: #666666;
+            --border-color: rgba(0, 0, 0, 0.06); 
+            --font-serif: 'Cormorant Garamond', serif; 
+            --font-sans: 'Ubuntu', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- HEADER (Reutilizado) --- */
+        .main-header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background-color: rgba(249, 248, 246, 0.95); /* Fondo sólido sutil para lectura */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo { height: 60px; width: auto; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .menu-trigger { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; cursor: pointer; display: flex; align-items: center; gap: 10px; color: var(--text-color); text-decoration: none; }
+        .cta-btn { background: transparent; color: var(--text-color); padding: 8px 0; font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; border: none; cursor: pointer; }
+
+        /* --- ARTICLE LAYOUT --- */
+        .article-container {
+            max-width: 740px; /* Ancho de lectura óptimo */
+            margin: 180px auto 100px auto; /* Margen superior para el header fijo */
+            padding: 0 20px;
+        }
+
+        /* Header del Artículo */
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .article-category {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: 3rem; /* Ajustado para títulos largos */
+            line-height: 1.1;
+            font-weight: 400;
+            margin: 0 0 1.5rem 0;
+            color: #1a1a1a;
+        }
+
+        .article-date {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* Article Image */
+        .article-hero-img {
+            width: 100%;
+            height: auto; /* Altura automática para mantener proporción */
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 3rem;
+            border-radius: 2px;
+            /* Filtro eliminado para mostrar la imagen a color */
+        }
+
+        /* Cuerpo del Artículo */
+        .article-body {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .article-body p {
+            margin-bottom: 2rem;
+            font-family: var(--font-serif);
+            font-size: 1.3rem; 
+            line-height: 1.8;
+            color: #2a2a2a;
+        }
+
+        .article-body h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #111;
+        }
+        
+        .article-body ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .article-body li {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid #d4af37; /* Detalle dorado */
+        }
+
+        .article-body strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Botón Volver */
+        .back-nav {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-color);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .back-link:hover { border-bottom-color: var(--text-color); }
+
+        /* --- FOOTER (Reutilizado) --- */
+        footer {
+            padding: 5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+        .footer-logo { height: 35px; width: auto; object-fit: contain; margin-bottom: 0.5rem; }
+        .footer-col { display: flex; flex-direction: column; gap: 1rem; }
+        .footer-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: #111; text-decoration: none; opacity: 0.5; transition: opacity 0.3s; }
+        .footer-link:hover { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .article-title { font-size: 2.2rem; }
+            .article-hero-img { height: 250px; }
+            .logo { height: 45px; }
+            footer { flex-direction: column; align-items: center; gap: 3rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER (Simplificado para el artículo) -->
+    <header class="main-header">
+        <div class="header-left">
+            <a href="index.html" class="menu-trigger">← Back</a>
+        </div>
+        <a href="index.html">
+            <img class="logo" src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="CIRCOLO">
+        </a>
+        <div class="header-right">
+            <button class="cta-btn" onclick="window.location.href='index.html#contact'">Contact</button>
+        </div>
+    </header>
+
+    <!-- CONTENIDO DEL ARTÍCULO -->
+    <article class="article-container">
+        
+        <div class="article-meta">
+            <span class="article-category">Strategy</span>
+            <h1 class="article-title">Why Event Planning Companies Need to Embrace Experience Design to Stay Relevant?</h1>
+            <span class="article-date">July 15, 2025 • By Sebastian Mora</span>
+        </div>
+
+        <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/687741201ff3c1e399e02d3e_BFA_37459_5207572%2Bweb%2B(2).jpg" alt="Experience Design" class="article-hero-img">
+
+        <div class="article-body">
+            <h3>Introduction</h3>
+            <p>In an era where audiences crave more than just well-organized events, traditional event planning companies are finding themselves at a crossroads. The landscape is shifting, and the rise of experience design is redefining what it means to host a truly memorable event. For event planning companies, adapting to this new paradigm is no longer optional—it’s essential for survival and success.</p>
+            
+            <p>More than ever, audiences are no longer satisfied with simply showing up. In fact, 87% of consumers say they are more likely to buy from a brand that delivers meaningful experiences. That stat alone should prompt every event planner to rethink their strategy.</p>
+
+            <h3>Why the Old Event Planning Model Is No Longer Enough?</h3>
+            <p>Let’s start with what’s broken. Traditional event planning has always revolved around logistics: securing venues, coordinating vendors, and managing timelines. While these elements are important, they often fall short of creating the kind of impactful, engaging experiences that modern audiences expect.</p>
+            
+            <p>Today’s attendees want more than smooth check-ins and nice catering. They want to feel something. They want to remember who they met, what they learned, and how the experience changed them. Event planning in its conventional form simply isn’t designed to deliver that level of emotional resonance.</p>
+
+            <h3>So, What’s Emerging to Replace Event Planning? Enter Experience Design</h3>
+            <p>The event world needed something more—and that’s where experience design comes in. Unlike traditional event planning, experience design focuses on creating holistic, immersive environments that engage attendees on multiple levels.</p>
+            
+            <p>Experience design doesn’t begin with logistics—it starts with emotion, intention, and transformation. It asks: What journey are we inviting people into? What will they remember long after it ends? It’s the difference between hosting a dinner and creating a moment your guests will talk about for years.</p>
+
+            <h3>Why Event Planning Companies Can’t Afford to Ignore Experience Design?</h3>
+            <p>Integrating experience design into your planning process isn’t just a creative choice—it’s a competitive necessity. Here are a few reasons why:</p>
+            <ul>
+                <li><strong>Increased Engagement</strong> – Experience design keeps people involved and curious. It replaces passive participation with active emotional connection.</li>
+                <li><strong>Stronger Emotional Bonds</strong> – Instead of focusing only on logistics, experience design allows brands to spark real emotions that drive loyalty.</li>
+                <li><strong>Memorable Moments = Repeat Business</strong> – When events leave a lasting impression, attendees become advocates. That’s good for retention—and even better for referrals.</li>
+                <li><strong>Better Metrics</strong> – Experiential events often see higher content shares, dwell time, and post-event conversion rates.</li>
+            </ul>
+            <p>A recent report by Event Marketer found that 91% of consumers say they have more positive feelings about a brand after attending a live experience. In short, emotion drives action.</p>
+
+            <h3>How Do These Principles Work in Real Life? The DoraHacks Case Study</h3>
+            <p>Let’s take a real-world example from Circolo’s portfolio.</p>
+            <p><strong>Client:</strong> DoraHacks (via Trevor Ogata, Global Summit Series Lead)<br>
+            <strong>Location:</strong> Singapore<br>
+            <strong>Objective:</strong> Deliver a high-stakes blockchain summit—planned remotely from San Francisco.</p>
+            
+            <p><strong>Key Challenges:</strong></p>
+            <ul>
+                <li>No local support team or cultural familiarity</li>
+                <li>Last-minute venue fallout (funds already spent)</li>
+                <li>Visa complications with internal team</li>
+            </ul>
+
+            <p><strong>Circolo’s Response:</strong></p>
+            <ul>
+                <li>Alvaro, Circolo’s founder, flew to Singapore personally.</li>
+                <li>He recovered lost funds and sourced a <em>better venue</em>—for free.</li>
+                <li>Circolo supplied on-ground team support, stepping in where the client team couldn’t.</li>
+            </ul>
+
+            <p><strong>Results:</strong></p>
+            <p>The event was not only rescued but elevated. Trevor described it best: “I felt like I was stealing from Circolo… The level of care was unreal.”</p>
+            <p>This is the kind of transformation that’s only possible when you go beyond planning and start designing experiences.</p>
+
+            <h3>Circolo’s Response to the New Demand: Designing for Transformation</h3>
+            <p>At Circolo, we saw this shift coming — and responded by building something radically different. Our events are designed with intention from start to finish. From the moment an attendee receives an invitation to the final goodbye, every touchpoint is mapped with care.</p>
+            
+            <p>We don’t just build run-of-show timelines—we build emotional arcs. Lighting, scent, sound, flow, and energy are curated to shape how people feel. The result? People don’t just remember our events. They feel changed by them.</p>
+
+            <h3>The Future of Events Belongs to Experience Designers</h3>
+            <p>Event planning served its purpose in the past—but today, experience design leads the way forward.</p>
+            
+            <p>As AI, automation, and remote work reshape the way people gather, human connection is becoming the most valuable currency of all. The brands, governments, and organizations that master experience design will be the ones who:</p>
+            <ul>
+                <li>Build real communities</li>
+                <li>Spark global conversations</li>
+                <li>Earn deep, lasting loyalty</li>
+            </ul>
+            <p>And Circolo is already helping them get there.</p>
+            <p>If you want to stay relevant in this industry, ask yourself this: Are you still planning events? Or are you designing experiences worth remembering?</p>
+        </div>
+
+        <nav class="back-nav">
+            <a href="index.html#journal" class="back-link">Return to Journal</a>
+        </nav>
+
+    </article>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-col">
+            <img class="footer-logo" src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="CIRCOLO">
+            <p style="font-size: 0.75rem; margin: 0.5rem 0 0 0; color: #888;">© 2026 Circolo Life. LEAAS.</p>
+        </div>
+        <div class="footer-col" style="flex-direction: row; gap: 3rem;">
+            <a href="https://www.instagram.com/circolo.life/" target="_blank" class="footer-link">Instagram</a>
+            <a href="https://www.linkedin.com/company/circololife/posts/?feedView=all" target="_blank" class="footer-link">LinkedIn</a>
+            <a href="mailto:info@circololife.com" class="footer-link">Contact</a>
+        </div>
+    </footer>
+
+</body>
+</html>
